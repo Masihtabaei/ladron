@@ -8,4 +8,4 @@ Narrative survival game focused on riddle-solving, developed within our Fundamen
 2. \<your-name\>
 3. \<your-name\>
 4. \<your-name\>
-5. \<your-name\>
+5. Seyedmasih Tabaei (Masih)
