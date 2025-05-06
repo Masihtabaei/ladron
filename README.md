@@ -6,6 +6,6 @@ Narrative survival game focused on riddle-solving, developed within our Fundamen
 
 1. \<your-name\>
 2. \<your-name\>
-3. \<your-name\>
+3. Alex Gaetan Nikiema
 4. Ali Ali Mahmoud
 5. Seyedmasih Tabaei (Masih)
