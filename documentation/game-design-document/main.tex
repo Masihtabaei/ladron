@@ -1,0 +1,200 @@
+\documentclass[11pt, a4paper]{article} % Dokumentklasse 'article', Schriftgröße 11pt, Papierformat A4
+
+% --- Deutsche Spracheinstellungen und Zeichenkodierung ---
+\usepackage[utf8]{inputenc}     % Erlaubt die direkte Eingabe von Umlauten etc. (UTF-8 Kodierung)
+\usepackage[T1]{fontenc}        % Setzt die Schriftkodierung auf T1 (wichtig für Silbentrennung etc.)
+\usepackage[ngerman]{babel}     % Lädt deutsche Spracheinstellungen (neue Rechtschreibung)
+
+% --- Seitenlayout ---
+\usepackage[a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry} % Seitenränder anpassen
+
+% --- Nützliche Pakete ---
+\usepackage{graphicx}           % Zum Einbinden von Grafiken (falls später doch benötigt)
+\usepackage{hyperref}           % Erstellt klickbare Links (z.B. im Inhaltsverzeichnis)
+\usepackage{amsmath}            % Für mathematische Formeln
+\usepackage{amssymb}            % Für mathematische Symbole
+\usepackage{listings}           % Zum Darstellen von Code-Snippets (falls benötigt)
+%\usepackage{lipsum}             % Nur zum Erzeugen von Beispieltext (kann entfernt werden)
+\usepackage{tocbibind}          % Fügt Inhaltsverzeichnis, Abbildungsverzeichnis etc. zum Inhaltsverzeichnis hinzu
+
+% --- Dokumentinformationen (für PDF-Metadaten und ggf. Kopf-/Fußzeilen) ---
+\title{Game Design Document: [Ihr Spielname]} % Titel für PDF Metadaten (Spielnamen anpassen)
+\author{Team: [Ihr Teamname oder Namen der Mitglieder]} % Autor für PDF Metadaten (anpassen)
+
+% --- Anpassungen ---
+\hypersetup{                    % Einstellungen für hyperref
+    colorlinks=true,            % Links farbig statt mit Rahmen
+    linkcolor=black,            % Farbe für interne Links (z.B. Inhaltsverzeichnis) ist schwarz
+    filecolor=magenta,          % Farbe für Dateilinks
+    urlcolor=cyan,              % Farbe für URLs (kann auch auf black gesetzt werden)
+    citecolor=black,            % Farbe für Zitat-Links (falls BibTeX genutzt wird)
+    pdftitle={Game Design Document - [Ihr Spielname]}, % PDF-Titel anpassen (Spielnamen anpassen)
+    pdfauthor={\@author},       % Nimmt den Autor aus \author für die PDF-Metadaten
+    pdfpagemode=UseOutlines,    % Zeigt Lesezeichen beim Öffnen an (optional)
+}
+
+% Verhindert Einrückung am Absatzanfang global (optional, oft bei technischen Dokumenten gewünscht)
+\setlength{\parindent}{0pt}
+% Setzt einen kleinen Abstand zwischen Absätzen (wenn keine Einrückung verwendet wird)
+\setlength{\parskip}{0.5em}
+
+
+% ==================================================
+% Beginn des eigentlichen Dokuments
+% ==================================================
+\begin{document}
+
+% --- Benutzerdefinierte Titelseite ---
+\begin{titlepage}
+    \centering % Zentriert den Inhalt der Titelseite
+    \vspace*{1cm} % Vertikaler Abstand vom oberen Rand (mit *)
+
+    % --- Hochschule ---
+    {\Large \textbf{Hochschule für angewandte Wissenschaften Coburg}}\par
+    \vspace{0.5cm} % Vertikaler Abstand
+    {\large Fakultät für Elektrotechnik und Informatik}\par
+    \vspace{2.5cm} % Vertikaler Abstand
+
+    % --- Dokumenttyp ---
+    {\huge \bfseries Game Design Document}\par
+    \vspace{1cm} % Vertikaler Abstand
+
+    % --- Spieltitel ---
+    {\HUGE \bfseries [Ihr Spielname]}\par
+    \vspace{3cm} % Großer vertikaler Abstand
+
+    % --- Autor(en) ---
+    {\Large Vorgelegt von:}\par
+    \vspace{0.5cm}
+    {\large [Name Mitglied 1]}\par % Namen der Teammitglieder eintragen
+    {\large [Name Mitglied 2]}\par
+    {\large [Name Mitglied 3]}\par
+    % {\large ...}\par % Fügen Sie weitere Mitglieder hinzu oder verwenden Sie einen Teamnamen
+    % Alternativ: {\large Team: [Ihr Teamname]}
+    \vspace{1.5cm}
+
+    % --- Kurs/Modul/Betreuer ---
+    {\Large Im Rahmen des Kurses:}\par
+    \vspace{0.3cm}
+    {\large Grundlagen des Game Design}\par % Kursname eingefügt
+    \vspace{0.5cm}
+    {\Large Betreuer:}\par
+    \vspace{0.3cm}
+    {\large Prof. Dr. Stephan Streuber}\par
+
+    % --- Füllt den Rest der Seite nach unten ---
+    \vfill
+
+    % --- Datum ---
+    {\large \today}\par % Aktuelles Datum (wird beim Kompilieren eingesetzt)
+    % Alternativ ein festes Datum: {\large Bamberg, 1. April 2025} % (Datum anpassen)
+
+\end{titlepage}
+% --- Ende der Titelseite ---
+
+
+\tableofcontents            % Erzeugt das Inhaltsverzeichnis
+\newpage
+
+
+% --- Abschnitt 1: Einführung ---
+\section{Einführung}
+\subsection{Spielname}
+% Tragen Sie hier den vorläufigen oder endgültigen Namen des Spiels ein.
+% Beispiel: Der Arbeitstitel des Projekts lautet "[Ihr Spielname]".
+\subsection{Genre}
+% Definieren Sie das Hauptgenre und ggf. Subgenres.
+% Beispiel: 3D Puzzle-Platformer mit Fokus auf Physik-Rätseln.
+\subsection{Plattformen}
+% Listen Sie die Zielplattformen auf.
+% Beispiel: PC (Windows, Steam).
+\subsection{Zielgruppe}
+% Beschreiben Sie die primäre und sekundäre Zielgruppe.
+% Beispiel: SpielerInnen (12+) mit Interesse an Knobelspielen und entspannter Atmosphäre.
+\subsection{USP (Unique Selling Proposition)}
+% Was macht das Spiel einzigartig?
+% Beispiel: Die Kernmechanik basiert auf der Manipulation von Zeit für einzelne Objekte in der Spielwelt.
+\subsection{High Concept}
+% Das Spielkonzept in einem Satz.
+% Beispiel: "Ein atmosphärischer Puzzler, in dem Spieler durch Zeitmanipulation Hindernisse überwinden."
+
+\newpage
+
+% --- Abschnitt 2: Spielmechanik (Gameplay) ---
+\section{Spielmechanik (Gameplay)}
+\subsection{Kernmechaniken}
+% Grundlegende Aktionen und Gameplay-Loop.
+\subsection{Steuerung}
+% Eingabemethoden und Schema.
+\subsection{Spielmodi}
+% Verfügbare Modi (Singleplayer, etc.).
+\subsection{Ziel und Fortschritt}
+% Spielziel, Gewinn-/Verlustbedingungen, Progression.
+\subsection{Schwierigkeitskurve \& Balancing}
+% Anstieg der Herausforderung, Anpassung.
+\subsection{Wirtschaftssystem}
+% Ressourcen, Währung, Belohnungen (falls zutreffend).
+
+\newpage
+
+% --- Abschnitt 3: Story & Charaktere ---
+\section{Story \& Charaktere}
+\subsection{Setting \& Lore}
+% Weltbeschreibung, Hintergrundgeschichte.
+\subsection{Hauptcharaktere}
+% Protagonisten, Antagonisten, wichtige NPCs.
+\subsection{Storystruktur}
+% Handlungsverlauf, Narrative, Missionen/Quests.
+
+\newpage
+
+% --- Abschnitt 4: Spielwelt & Leveldesign ---
+\section{Spielwelt \& Leveldesign}
+\subsection{Umgebungen \& Karten}
+% Zonen, Regionen, Levelübersicht.
+\subsection{Levelstruktur}
+% Linear, Open-World, etc., Designphilosophie.
+\subsection{Interaktivität}
+% Interaktive Elemente der Spielwelt.
+\subsection{KI \& NPCs}
+% Verhalten von Gegnern und anderen NPCs.
+
+\newpage
+
+% --- Abschnitt 5: Audiovisuelle Gestaltung ---
+\section{Audiovisuelle Gestaltung}
+\subsection{Grafikstil}
+% Visueller Stil (Realistisch, Cartoon, etc.).
+\subsection{Sounddesign \& Musik}
+% Klanglandschaft, Musikstil, Effekte, Voice-Over.
+\subsection{UI/UX Design}
+% Menüs, HUD, Feedback, Benutzerfreundlichkeit.
+
+\newpage
+
+% --- Abschnitt 6: Technik & Entwicklung ---
+\section{Technik \& Entwicklung}
+\subsection{Game Engine}
+% Genutzte Engine und Begründung.
+\subsection{Programmiersprachen \& Tools}
+% Sprachen, externe Software.
+\subsection{Physik \& Animationen}
+% Physik-Engine, Animationsmethoden.
+\subsection{Netzwerk \& Multiplayer}
+% Falls zutreffend: Architektur, Features.
+
+\newpage
+
+% --- Abschnitt 7: Projektmanagement & Teamstruktur ---
+\section{Projektmanagement \& Teamstruktur}
+\subsection{Entwicklungsteam}
+% Rollenverteilung im Team. (Kann sich mit Titelseite überschneiden, hier ggf. detaillierter)
+\subsection{Zeitplan \& Meilensteine}
+% Grober Zeitplan, wichtige Deadlines/Phasen.
+\subsection{Risiken \& Herausforderungen}
+% Potenzielle Probleme und Lösungsansätze.
+
+\end{document}
+% ==================================================
+% Ende des Dokuments
+% ==================================================
