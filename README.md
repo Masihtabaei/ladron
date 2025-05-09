@@ -5,7 +5,7 @@ Narrative survival game focused on riddle-solving, developed within our Fundamen
 # Contributors
 
 1. \<your-name\>
-2. \<your-name\>
-3. Alex Gaetan Nikiema
-4. Ali Ali Mahmoud
+2. Alex Gaetan Nikiema
+3. Ali Ali Mahmoud
+4. Jennifer Stoler
 5. Seyedmasih Tabaei (Masih)
