@@ -982,9 +982,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 256632069639909735, guid: bf2f7db177e5c9c47844c661a6622e48, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf2f7db177e5c9c47844c661a6622e48, type: 3}
       propertyPath: m_Name
       value: mailbox (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf2f7db177e5c9c47844c661a6622e48, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3000,7 +3008,7 @@ Transform:
   m_GameObject: {fileID: 861925389}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -6.335, y: 0.857, z: -9.617}
+  m_LocalPosition: {x: -6.335, y: 0.852, z: -9.617}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3058,6 +3066,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: -9.8
   speed: 5
+  distance: 3
+  mask:
+    serializedVersion: 2
+    m_Bits: 64
   eyes: {fileID: 13772181}
   xRotation: 0
   xSensitivity: 10

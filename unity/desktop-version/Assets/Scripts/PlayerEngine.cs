@@ -1,3 +1,4 @@
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class PlayerEngine : MonoBehaviour
@@ -7,6 +8,8 @@ public class PlayerEngine : MonoBehaviour
     private bool isGrounded;
     public float gravity = -9.8f;
     public float speed = 5f;
+    public float distance = 3f;
+    public LayerMask mask;
     public Camera eyes;
     public float xRotation = 0.0f;
     public float xSensitivity = 30.0f;
@@ -20,6 +23,16 @@ public class PlayerEngine : MonoBehaviour
     void Update()
     {
         isGrounded = controller.isGrounded;
+
+        Ray ray = new Ray(eyes.transform.position, eyes.transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * distance);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo, distance, mask))
+        {
+            var interactable = hitInfo.collider.GetComponent<IInteractable>();
+            Debug.Log(interactable.GetHint());
+
+        }
     }
 
     public void Move(Vector2 input)
