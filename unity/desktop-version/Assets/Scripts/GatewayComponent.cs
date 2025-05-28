@@ -5,6 +5,7 @@ using System.Collections;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TMPro;
+using UnityEngine.EventSystems;
 
 
 public class GatewayComponent : MonoBehaviour
@@ -13,9 +14,23 @@ public class GatewayComponent : MonoBehaviour
     public string apiKey;
 
     public TextMeshProUGUI response;
+    //Reference to the inputfield 
+    public TMP_InputField userInput;
+  
+
     public void Prompt(string message)
     {
+        
+        this.response.text = "Ladron: " + message + "\n\n";
         StartCoroutine(ForwardRequest(message));
+
+        //clearing the input field
+        userInput.text = "";
+
+        userInput.ActivateInputField();
+        EventSystem.current.SetSelectedGameObject(userInput.gameObject,null);
+
+
     }
 
     IEnumerator ForwardRequest(string message)
@@ -50,7 +65,7 @@ public class GatewayComponent : MonoBehaviour
                 JObject parsed = JObject.Parse(response);
                 string content = parsed["choices"]?[0]?["message"]?["content"]?.ToString();
                 Debug.Log("Response to your request: " + content);
-                this.response.text = content;
+                this.response.text += "Noctula: "+  content;
             }
             else
             {
