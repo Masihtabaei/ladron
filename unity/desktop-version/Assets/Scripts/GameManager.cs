@@ -3,31 +3,36 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public GatewayComponent gatewayComponent;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private GatewayComponent _gatewayComponent;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    private CountdownClock _countdownClock;
 
-    void OnPrincipleDetected(PrincipleDetectionResult result)
+    public void OnPrincipleDetected(PrincipleDetectionResult result)
     {
         Debug.Log(result);
     }
 
-    private void Awake() 
-    { 
-        if (gatewayComponent != null) { gatewayComponent.PrincipleDetected += OnPrincipleDetected; } 
+    public void OnTimeOut() 
+    {
+        Debug.Log("Ran out of time!");
     }
-    private void OnDestroy() 
-    { 
-        if (gatewayComponent != null) { gatewayComponent.PrincipleDetected -= OnPrincipleDetected; } 
+    private void Awake()
+    {
+        if (_gatewayComponent != null)
+        {
+            _gatewayComponent.PrincipleDetected += OnPrincipleDetected;
+            _countdownClock.TimeOut += OnTimeOut;
+        }
+    }
+    private void OnDestroy()
+    {
+        if (_gatewayComponent != null)
+        {
+            _gatewayComponent.PrincipleDetected -= OnPrincipleDetected; 
+            _countdownClock.TimeOut -= OnTimeOut;
+        }
 
     }
 }
