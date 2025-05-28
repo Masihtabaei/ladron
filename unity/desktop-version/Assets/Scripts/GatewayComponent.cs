@@ -18,6 +18,11 @@ public class PrincipleDetectionResult
     public float ClevernessScore;
     public float EvilScore;
 }
+public class ResponseFormat
+{
+    [JsonProperty("type")]
+    public string type = "json_object";
+}
 
 public class Message
 {
@@ -26,6 +31,9 @@ public class Message
 
     [JsonProperty("content")]
     public string Content { get; set; }
+
+    
+
 
     public Message(string role, string content)
     {
@@ -41,6 +49,12 @@ public class ChatRequest
 
     [JsonProperty("messages")]
     public List<Message> Messages { get; set; }
+
+    [JsonProperty("stream")]
+    public bool Stream { get; set; }
+
+    [JsonProperty("response_format")]
+    public ResponseFormat Response_Format { get; set; }
 }
 
 
@@ -53,24 +67,19 @@ public class GatewayComponent : MonoBehaviour
     //Reference to the inputfield 
     public TMP_InputField userInput;
 
-    
+    public Action<PrincipleDetectionResult> PrincipleDetected;
+
+
+
+
+
 
 
     public void Prompt(string message)
     {
-        string principleName ;
-        float confindeceScore ;
-        float clevernessScore ;
-        float evilScore ;
+        
 
-        StartCoroutine(DetectPrinciple(message, (result) =>
-        {
-            principleName = result.PrincipleName;
-            confindeceScore = result.ConfidenceScore;
-            clevernessScore = result.ClevernessScore;
-            evilScore = result.EvilScore;
-            Debug.Log($"Principle: {principleName}, Confidence: {confindeceScore}, Cleverness: {clevernessScore}, Evil: {evilScore}");
-        }));
+        StartCoroutine(DetectPrinciple(message));
 
         
         this.response.text = "Ladron: " + message + "\n\n";
@@ -128,8 +137,9 @@ public class GatewayComponent : MonoBehaviour
     }
 
 
-    public IEnumerator DetectPrinciple(string playerInput, Action<PrincipleDetectionResult> onResult)
+    IEnumerator DetectPrinciple(string playerInput)
     {
+        //onResult+=
         string url = "https://api.groq.com/openai/v1/chat/completions";
         string systemPrompt = File.ReadAllText("Assets/Prompts/PrincipleDetectionPrompt.txt");
 
@@ -142,7 +152,9 @@ public class GatewayComponent : MonoBehaviour
         var requestBody = new ChatRequest
         {
             Model = "llama3-8b-8192",
-            Messages = messageBuilder
+            Messages = messageBuilder,
+            Stream = false,
+            Response_Format = new() 
         };
 
         string jsonBody = JsonConvert.SerializeObject(requestBody);
@@ -168,7 +180,7 @@ public class GatewayComponent : MonoBehaviour
                 try
                 {
                     PrincipleDetectionResult result = JsonUtility.FromJson<PrincipleDetectionResult>(content);
-                    onResult?.Invoke(result);
+                    PrincipleDetected?.Invoke(result);
                 }
                 catch (Exception e)
                 {
