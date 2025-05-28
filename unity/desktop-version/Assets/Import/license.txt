@@ -1,0 +1,11 @@
+Model Information:
+* title:	Acer K222HQL Model Monitor
+* source:	https://sketchfab.com/3d-models/acer-k222hql-model-monitor-864c7f9afa2e49e1a64ad05b2a29f66a
+* author:	bahayalniz (https://sketchfab.com/bahayalniz)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Acer K222HQL Model Monitor" (https://sketchfab.com/3d-models/acer-k222hql-model-monitor-864c7f9afa2e49e1a64ad05b2a29f66a) by bahayalniz (https://sketchfab.com/bahayalniz) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

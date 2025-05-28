@@ -6,7 +6,7 @@ public class DoorInteractionHandler : MonoBehaviour, IInteractable
     public GameObject door;
     public string GetHint()
     {
-        return "Open/close the door by pressing E";
+        return "Open/close the door by pressing E.";
     }
 
     public void React()
