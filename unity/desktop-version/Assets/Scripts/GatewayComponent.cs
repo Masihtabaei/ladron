@@ -32,7 +32,7 @@ public class Message
     [JsonProperty("content")]
     public string Content { get; set; }
 
-    
+
 
 
     public Message(string role, string content)
@@ -77,20 +77,23 @@ public class GatewayComponent : MonoBehaviour
 
     public void Prompt(string message)
     {
-        
+
+        if (message == null || message == string.Empty)
+            return;
 
         StartCoroutine(DetectPrinciple(message));
 
-        
+
         this.response.text = "Ladron: " + message + "\n\n";
         StartCoroutine(ForwardRequest(message));
 
-        //clearing the input field
-        userInput.text = "";
+        userInput.text = string.Empty;
 
         userInput.ActivateInputField();
-        EventSystem.current.SetSelectedGameObject(userInput.gameObject,null);
-
+        if (EventSystem.current.alreadySelecting)
+        {
+            EventSystem.current.SetSelectedGameObject(userInput.gameObject, null);
+        }
 
     }
 
@@ -126,7 +129,7 @@ public class GatewayComponent : MonoBehaviour
                 JObject parsed = JObject.Parse(response);
                 string content = parsed["choices"]?[0]?["message"]?["content"]?.ToString();
                 Debug.Log("Response to your request: " + content);
-                this.response.text += "Noctula: "+  content;
+                this.response.text += "Noctula: " + content;
             }
             else
             {
@@ -154,7 +157,7 @@ public class GatewayComponent : MonoBehaviour
             Model = "llama3-8b-8192",
             Messages = messageBuilder,
             Stream = false,
-            Response_Format = new() 
+            Response_Format = new()
         };
 
         string jsonBody = JsonConvert.SerializeObject(requestBody);
@@ -198,7 +201,7 @@ public class GatewayComponent : MonoBehaviour
 
 
 
- 
+
 
 
 }
