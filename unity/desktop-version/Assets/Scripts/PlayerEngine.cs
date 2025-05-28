@@ -14,24 +14,32 @@ public class PlayerEngine : MonoBehaviour
     public float xRotation = 0.0f;
     public float xSensitivity = 30.0f;
     public float ySensitivity = 30.0f;
-
+    public InteractionUserInterfaceManager interactionUserInterfaceManager;
+    private InputManager inputManager;
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        inputManager = GetComponent<InputManager>();
     }
 
     void Update()
     {
         isGrounded = controller.isGrounded;
-
+        interactionUserInterfaceManager.UpdateHint(string.Empty);
         Ray ray = new Ray(eyes.transform.position, eyes.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance);
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, distance, mask))
         {
             var interactable = hitInfo.collider.GetComponent<IInteractable>();
-            Debug.Log(interactable.GetHint());
-
+            if (interactable != null)
+            {
+                interactionUserInterfaceManager.UpdateHint(interactable.GetHint());
+                if (inputManager.walking.Interaction.triggered) 
+                {
+                    interactable.React();
+                }
+            }
         }
     }
 

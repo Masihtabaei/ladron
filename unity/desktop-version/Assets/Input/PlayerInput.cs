@@ -53,6 +53,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""35cf5699-856f-49a5-8146-2237679ebcc2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Visual"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d90a3bc-93d5-463c-a0b3-8ea4cf5f375b"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Walking_Movement = m_Walking.FindAction("Movement", throwIfNotFound: true);
         m_Walking_Jump = m_Walking.FindAction("Jump", throwIfNotFound: true);
         m_Walking_Visual = m_Walking.FindAction("Visual", throwIfNotFound: true);
+        m_Walking_Interaction = m_Walking.FindAction("Interaction", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -212,6 +233,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Walking_Movement;
     private readonly InputAction m_Walking_Jump;
     private readonly InputAction m_Walking_Visual;
+    private readonly InputAction m_Walking_Interaction;
     public struct WalkingActions
     {
         private @PlayerInput m_Wrapper;
@@ -219,6 +241,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Walking_Movement;
         public InputAction @Jump => m_Wrapper.m_Walking_Jump;
         public InputAction @Visual => m_Wrapper.m_Walking_Visual;
+        public InputAction @Interaction => m_Wrapper.m_Walking_Interaction;
         public InputActionMap Get() { return m_Wrapper.m_Walking; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -237,6 +260,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Visual.started += instance.OnVisual;
             @Visual.performed += instance.OnVisual;
             @Visual.canceled += instance.OnVisual;
+            @Interaction.started += instance.OnInteraction;
+            @Interaction.performed += instance.OnInteraction;
+            @Interaction.canceled += instance.OnInteraction;
         }
 
         private void UnregisterCallbacks(IWalkingActions instance)
@@ -250,6 +276,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Visual.started -= instance.OnVisual;
             @Visual.performed -= instance.OnVisual;
             @Visual.canceled -= instance.OnVisual;
+            @Interaction.started -= instance.OnInteraction;
+            @Interaction.performed -= instance.OnInteraction;
+            @Interaction.canceled -= instance.OnInteraction;
         }
 
         public void RemoveCallbacks(IWalkingActions instance)
@@ -272,5 +301,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnVisual(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
     }
 }
