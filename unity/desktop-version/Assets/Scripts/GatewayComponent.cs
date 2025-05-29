@@ -90,7 +90,7 @@ public class GatewayComponent : MonoBehaviour
         userInput.text = string.Empty;
 
         userInput.ActivateInputField();
-        if (EventSystem.current.alreadySelecting)
+        if (!EventSystem.current.alreadySelecting)
         {
             EventSystem.current.SetSelectedGameObject(userInput.gameObject, null);
         }
