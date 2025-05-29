@@ -5173,6 +5173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 13772181}
   fixedCamera: {fileID: 965072723}
+  _crosshair: {fileID: 548009923}
 --- !u!1 &993021797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 335715110992909045, guid: 26b8166c4f06708408d1d04ab4ee35d8, type: 3}
