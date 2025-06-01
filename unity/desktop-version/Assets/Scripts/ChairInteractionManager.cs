@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class ChairInteractionManager : MonoBehaviour, IInteractable
 {
-    public Camera mainCamera;
-    public Camera fixedCamera;
-
+    [SerializeField]
+    private Camera _mainCamera;
+    [SerializeField]
+    private Camera _fixedCamera;
     [SerializeField]
     private GameObject _crosshair;
 
@@ -16,7 +17,7 @@ public class ChairInteractionManager : MonoBehaviour, IInteractable
     public void React()
     {
         _crosshair.SetActive(false);
-        if (fixedCamera != null) fixedCamera.enabled = true;
-        if (mainCamera != null) mainCamera.enabled = false;
+        if (_fixedCamera != null) _fixedCamera.enabled = true;
+        if (_mainCamera != null) _mainCamera.enabled = false;
     }
 }

@@ -3,39 +3,50 @@ using UnityEngine;
 
 public class PlayerEngine : MonoBehaviour
 {
-    private CharacterController controller;
-    private Vector3 velocity;
-    private bool isGrounded;
-    public float gravity = -9.8f;
-    public float speed = 5f;
-    public float distance = 3f;
-    public LayerMask mask;
-    public Camera eyes;
-    public float xRotation = 0.0f;
-    public float xSensitivity = 30.0f;
-    public float ySensitivity = 30.0f;
-    public InteractionUserInterfaceManager interactionUserInterfaceManager;
-    private InputManager inputManager;
+    [SerializeField]
+    private float _gravity = -9.8f;
+    [SerializeField]
+    private float _speed = 5f;
+    [SerializeField]
+    private float _range = 3f;
+    [SerializeField]
+    private LayerMask _mask;
+    [SerializeField]
+    private Camera _eyes;
+    [SerializeField]
+    private float _xRotation = 0.0f;
+    [SerializeField]
+    private float _xSensitivity = 30.0f;
+    [SerializeField]
+    private float _ySensitivity = 30.0f;
+    [SerializeField]
+    private InteractionUserInterfaceManager _interactionUserInterfaceManager;
+
+    private InputManager _inputManager;
+    private CharacterController _controller;
+    private Vector3 _velocity;
+    private bool _isGrounded;
+
     void Start()
     {
-        controller = GetComponent<CharacterController>();
-        inputManager = GetComponent<InputManager>();
+        _controller = GetComponent<CharacterController>();
+        _inputManager = GetComponent<InputManager>();
     }
 
     void Update()
     {
-        isGrounded = controller.isGrounded;
-        interactionUserInterfaceManager.UpdateHint(string.Empty);
-        Ray ray = new Ray(eyes.transform.position, eyes.transform.forward);
-        Debug.DrawRay(ray.origin, ray.direction * distance);
+        _isGrounded = _controller.isGrounded;
+        _interactionUserInterfaceManager.UpdateHint(string.Empty);
+        Ray ray = new Ray(_eyes.transform.position, _eyes.transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * _range);
         RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, distance, mask))
+        if (Physics.Raycast(ray, out hitInfo, _range, _mask))
         {
             var interactable = hitInfo.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                interactionUserInterfaceManager.UpdateHint(interactable.GetHint());
-                if (inputManager.walking.Interaction.triggered) 
+                _interactionUserInterfaceManager.UpdateHint(interactable.GetHint());
+                if (_inputManager.walking.Interaction.triggered) 
                 {
                     interactable.React();
                 }
@@ -49,15 +60,15 @@ public class PlayerEngine : MonoBehaviour
         direction.x = input.x;
         direction.z = input.y;
 
-        controller.Move(transform.TransformDirection(direction) * speed * Time.deltaTime);
+        _controller.Move(transform.TransformDirection(direction) * _speed * Time.deltaTime);
 
 
-        velocity.y = gravity * Time.deltaTime;
-        if (isGrounded && velocity.y < 0)
+        _velocity.y = _gravity * Time.deltaTime;
+        if (_isGrounded && _velocity.y < 0)
         {
-            velocity.y = -2.0f;
+            _velocity.y = -2.0f;
         }
-        controller.Move(velocity * Time.deltaTime);
+        _controller.Move(_velocity * Time.deltaTime);
     }
 
     public void Look(Vector2 input) 
@@ -65,9 +76,9 @@ public class PlayerEngine : MonoBehaviour
         float mouseX = input.x;
         float mouseY = input.y;
 
-        xRotation -= (mouseY * Time.deltaTime) * ySensitivity;
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
-        eyes.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSensitivity);
+        _xRotation -= (mouseY * Time.deltaTime) * _ySensitivity;
+        _xRotation = Mathf.Clamp(_xRotation, -80f, 80f);
+        _eyes.transform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
+        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * _xSensitivity);
     }
 }
