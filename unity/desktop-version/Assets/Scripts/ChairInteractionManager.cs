@@ -3,12 +3,13 @@ using UnityEngine;
 public class ChairInteractionManager : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    private Camera _mainCamera;
+    private PlayerEngine _player;
     [SerializeField]
     private Camera _fixedCamera;
     [SerializeField]
     private GameObject _crosshair;
 
+    private bool _isSitting = false;
     public string GetHint()
     {
         return "Press E to sit.";
@@ -16,8 +17,9 @@ public class ChairInteractionManager : MonoBehaviour, IInteractable
 
     public void React()
     {
-        _crosshair.SetActive(false);
-        if (_fixedCamera != null) _fixedCamera.enabled = true;
-        if (_mainCamera != null) _mainCamera.enabled = false;
+        _isSitting = !_isSitting;
+        _crosshair.SetActive(!_isSitting);
+        if (_fixedCamera != null) _fixedCamera.enabled = _isSitting;
+        if (_player != null) _player.gameObject.SetActive(!_isSitting);
     }
 }

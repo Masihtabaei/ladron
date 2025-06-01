@@ -46,14 +46,17 @@ public class PlayerEngine : MonoBehaviour
             if (interactable != null)
             {
                 _interactionUserInterfaceManager.UpdateHint(interactable.GetHint());
-                if (_inputManager.walking.Interaction.triggered) 
+                if (_inputManager.walking.Interaction.triggered)
                 {
                     interactable.React();
                 }
             }
         }
     }
-
+    private void OnDisable()
+    {
+        _interactionUserInterfaceManager.UpdateHint(string.Empty);
+    }
     public void Move(Vector2 input)
     {
         Vector3 direction = Vector3.zero;
@@ -71,7 +74,7 @@ public class PlayerEngine : MonoBehaviour
         _controller.Move(_velocity * Time.deltaTime);
     }
 
-    public void Look(Vector2 input) 
+    public void Look(Vector2 input)
     {
         float mouseX = input.x;
         float mouseY = input.y;
