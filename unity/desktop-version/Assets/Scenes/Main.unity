@@ -1994,7 +1994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077b30e954d02254fb8cd51d9c6ae62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _apiKey: 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
+  _apiKey: 
 --- !u!4 &451391878
 Transform:
   m_ObjectHideFlags: 0
@@ -7758,6 +7758,8 @@ MonoBehaviour:
   _gatewayComponent: {fileID: 451391877}
   _response: {fileID: 1380661585}
   _input: {fileID: 897083317}
+  _patienceScore: 20
+  _patienceLossStep: 5
 --- !u!1001 &1480607244
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,7 +12,12 @@ public class Noctula : MonoBehaviour
     private TextMeshProUGUI _response;
     [SerializeField]
     private TMP_InputField _input;
+    [SerializeField]
+    private int _patienceScore = 20;
+    [SerializeField]
+    private int _patienceLossStep = 5;
 
+    private Action[] _gameChecks;
 
     public void Prompt()
     {
@@ -46,13 +51,13 @@ public class Noctula : MonoBehaviour
         try
         {
             PrincipleDetectionResult result = JsonUtility.FromJson<PrincipleDetectionResult>(response);
+            UpdatePatienceScore(result);
         }
         catch (Exception e)
         {
             Debug.LogError("Failed to parse LLM response: " + e.Message);
         }
     }
-
 
     public void ResponseAsUsual(string message)
     {
@@ -74,6 +79,45 @@ public class Noctula : MonoBehaviour
         StartCoroutine(_gatewayComponent.ForwardRequest(messages, true, OnPrincipleDetected));
     }
 
+    private void Start()
+    {
+        _gameChecks = new Action[]
+        {
+            CheckForGameOver,
+            CheckForProfessorCall,
+            CheckForUnlockingFirstPrincipal
+        };
+    }
+
+    private void CheckForGameOver()
+    {
+        if (_patienceScore == 0)
+            Debug.Log("Game Over");
+    }
+
+    private void CheckForProfessorCall()
+    {
+        Debug.Log("CheckForProfessorCall to be implemented!");
+    }
+
+    private void CheckForUnlockingFirstPrincipal()
+    {
+        Debug.Log("CheckForUnlockingFirstPrincipal to be implemented!");
+    }
+
+    private void UpdatePatienceScore(PrincipleDetectionResult result)
+    {
+        if (result == null) return;
+        if (result.PrincipleName == string.Empty)
+            _patienceScore -= _patienceLossStep;
+        else
+            _patienceScore += _patienceLossStep;
+
+        foreach (var check in _gameChecks)
+        {
+            check.Invoke();
+        }
+    }
 
     private const string USUAL_RESPONSE_SYSTEM_PROMPT = @"
 You are Noctula, a sharp-witted, chaotic AI assistant assigned to guard a set of top-secret exam questions.
