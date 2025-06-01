@@ -1,23 +1,25 @@
+using System.Diagnostics;
 using UnityEngine;
 
-public class ChairInteractionManager : MonoBehaviour, IInteractable
+public class CouchInteractionHandler : MonoBehaviour, IInteractable
 {
     public Camera mainCamera;
     public Camera fixedCamera;
 
-    public bool isUp = true;
+    public bool isUnderCouch = false;
 
     [SerializeField]
     private GameObject _crosshair;
 
     public string GetHint()
     {
-        return "Press E to sit or stand up";
+        return "Press E to hide under the couch or to get out";
     }
 
     public void React()
     {
-        if (!isUp)
+
+        if (!isUnderCouch)
         {
             _crosshair.SetActive(false);
             if (fixedCamera != null) fixedCamera.enabled = true;
@@ -30,6 +32,6 @@ public class ChairInteractionManager : MonoBehaviour, IInteractable
             if (mainCamera != null) mainCamera.enabled = true;
         }
 
-        isUp = !isUp;
+        isUnderCouch = !isUnderCouch;
     }
 }
