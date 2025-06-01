@@ -3,15 +3,18 @@ using UnityEngine;
 public class DoorInteractionHandler : MonoBehaviour, IInteractable
 {
     private bool isOpen;
-    public GameObject door;
+
+    [SerializeField]
+    private GameObject _door;
+
     public string GetHint()
     {
-        return "Open/close the door by pressing E.";
+        return "Press E to open/close the door.";
     }
 
     public void React()
     {
         isOpen = !isOpen;
-        door.GetComponent<Animator>().SetBool("IsOpen", isOpen);
+        _door.GetComponent<Animator>().SetBool("IsOpen", isOpen);
     }
 }

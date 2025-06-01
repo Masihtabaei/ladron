@@ -3,7 +3,8 @@ using TMPro;
 
 public class InteractionUserInterfaceManager : MonoBehaviour
 {
-    public TextMeshProUGUI hint;
+    [SerializeField]
+    private TextMeshProUGUI _hint;
     
     [SerializeField]
     private TextMeshProUGUI _countdownDisplay;
@@ -17,7 +18,7 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     }
     public void UpdateHint(string message)
     {
-        hint.text = message;
+        _hint.text = message;
     }
 
     private void OnTimeUpdated(float newValue)

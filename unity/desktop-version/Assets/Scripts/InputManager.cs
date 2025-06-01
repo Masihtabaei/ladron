@@ -3,8 +3,9 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    private PlayerInput playerInput;
     public PlayerInput.WalkingActions walking;
+
+    private PlayerInput playerInput;
     private PlayerEngine player;
     void Awake()
     {
