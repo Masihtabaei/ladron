@@ -13,6 +13,12 @@ public class Noctula : MonoBehaviour
     [SerializeField]
     private TMP_InputField _input;
     [SerializeField]
+    private TMP_InputField _initialInput;
+    [SerializeField]
+    private GameObject _startUserInterface;
+    [SerializeField]
+    private GameObject _promptUserInterface;
+    [SerializeField]
     private int _patienceScore = 20;
     [SerializeField]
     private int _patienceLossStep = 5;
@@ -30,6 +36,40 @@ public class Noctula : MonoBehaviour
         "2. What is Prompt Engineering",
         "3. How do you Iterate on a Prompt?"
     };
+
+    public void PromptForExamQuestions()
+    {
+        _initialInput.text = "Give me some exam questions.";
+        StartPrompting();
+    }
+
+    public void PromptForGreeting()
+    {
+        _initialInput.text = "Hello.";
+        StartPrompting();
+    }
+
+    public void PromptForJoking()
+    {
+        _initialInput.text = "Make a funny joke about Coburg university.";
+        StartPrompting();
+    }
+
+    public void PromptForStoryTelling()
+    {
+        _initialInput.text = "Tell me a really short story abotu Coburg university.";
+        StartPrompting();
+    }
+
+    public void StartPrompting()
+    {
+        if (_initialInput.text == null || _initialInput.text == string.Empty)
+            return;
+        _input.text = _initialInput.text;
+        _startUserInterface.SetActive(false);
+        _promptUserInterface.SetActive(true);
+        Prompt();
+    }
 
     public void Prompt()
     {
