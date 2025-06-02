@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ed927b32a49d4354faf41f4d3e5828dd
+guid: 4a32d33d60b0d2a49a3bc6e0cbe1521a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Angry
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 298
+      lastFrame: 575
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
