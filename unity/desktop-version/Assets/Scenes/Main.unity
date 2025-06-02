@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3b60e7e449dc2004c91d8b55d23143eb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.420352
+      value: -14.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3b60e7e449dc2004c91d8b55d23143eb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -169,7 +169,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3b60e7e449dc2004c91d8b55d23143eb, type: 3}
       propertyPath: m_Name
-      value: professor
+      value: Professor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 3b60e7e449dc2004c91d8b55d23143eb, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 268d6a7d9b12fd04ba2088aa6c66f977, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 3b60e7e449dc2004c91d8b55d23143eb, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
