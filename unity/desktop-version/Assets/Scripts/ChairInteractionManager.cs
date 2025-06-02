@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ChairInteractionManager : MonoBehaviour, IInteractable
 {
@@ -8,6 +10,8 @@ public class ChairInteractionManager : MonoBehaviour, IInteractable
     private Camera _fixedCamera;
     [SerializeField]
     private GameObject _crosshair;
+
+   
 
     private bool _isSitting = false;
     public string GetHint()
@@ -21,5 +25,8 @@ public class ChairInteractionManager : MonoBehaviour, IInteractable
         _crosshair.SetActive(!_isSitting);
         if (_fixedCamera != null) _fixedCamera.enabled = _isSitting;
         if (_player != null) _player.gameObject.SetActive(!_isSitting);
+        if (!_isSitting && EventSystem.current != null) EventSystem.current.SetSelectedGameObject(null);
+
+        
     }
 }
