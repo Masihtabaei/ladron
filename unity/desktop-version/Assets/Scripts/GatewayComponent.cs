@@ -24,7 +24,7 @@ public class GatewayComponent : MonoBehaviour
         {
             requestBody = new GroqRequest
             {
-                Model = "llama3-8b-8192",
+                Model = "llama3-70b-8192",
                 Messages = messages,
                 Stream = false,
                 Response_Format = new()
@@ -62,6 +62,7 @@ public class GatewayComponent : MonoBehaviour
                 JObject parsed = JObject.Parse(response);
                 string content = parsed["choices"]?[0]?["message"]?["content"]?.ToString();
                 Debug.Log("LLM JSON result: " + content);
+                
                 callback?.Invoke(content);
             }
             else
