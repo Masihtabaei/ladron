@@ -1,0 +1,21 @@
+NOTES
+
+Created in Blender 4.0
+
+MISSING TEXTURES
+
+If the textures are missing in Blender, please reference the location of the Texture Map on your computer. In Blender go to:
+
+Go to Material Properties tab - if you don't have a material, create one
+Surface > Base Colour - Click the dot next to it and choose Image Texture
+Navigate to where you have saved this asset and find the TextureMap folder, open it and select MasterMaterial1px PNG.
+This should fix it!
+
+
+BLURRY TEXTURES IN GAME ENGINES
+
+The texture map in this asset is very small so double check things like mipmaps / filter mode that your material is using.
+
+LICENSE
+
+CC0 1.0 Universal
