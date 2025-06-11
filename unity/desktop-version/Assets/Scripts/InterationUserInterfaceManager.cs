@@ -5,7 +5,10 @@ public class InteractionUserInterfaceManager : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _hint;
-    
+
+    [SerializeField]
+    private TextMeshProUGUI _dialogue;
+
     [SerializeField]
     private TextMeshProUGUI _countdownDisplay;
 
@@ -19,6 +22,11 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     public void UpdateHint(string message)
     {
         _hint.text = message;
+    }
+
+    public void UpdateDialogue(string message)
+    {
+        _dialogue.text = message;
     }
 
     private void OnTimeUpdated(float newValue)

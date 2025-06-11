@@ -5,8 +5,7 @@ public class PlayerEngine : MonoBehaviour
 {
     [SerializeField]
     private float _gravity = -9.8f;
-    [SerializeField]
-    private float _speed = 5f;
+    public float _speed = 5f;
     [SerializeField]
     private float _range = 3f;
     [SerializeField]
