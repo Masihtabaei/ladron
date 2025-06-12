@@ -4,6 +4,7 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
     public event Action TimeOut;
+    public event Action DeadLineApproaches;
     public event Action<TimeSpan> TimeUpdated;
 
     private TimeSpan _counter;
@@ -17,6 +18,9 @@ public class TimeManager : MonoBehaviour
 
     [SerializeField]
     private byte _deadLineHour = 8;
+
+    [SerializeField]
+    private int _approachThresholdInSeconds = 60 * 60;
 
     private void Start()
     {
@@ -38,6 +42,11 @@ public class TimeManager : MonoBehaviour
             return;
         }
 
+        bool deadLineApproaches = _counter >= _deadLine.Subtract(TimeSpan.FromSeconds(_approachThresholdInSeconds));
+        if (deadLineApproaches)
+        {
+            DeadLineApproaches?.Invoke();
+        }
         _counter = _counter.Add(TimeSpan.FromSeconds(_multiplier * Time.deltaTime));
         TimeUpdated?.Invoke(_counter);
     }

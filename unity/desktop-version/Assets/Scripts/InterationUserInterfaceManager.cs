@@ -16,10 +16,6 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     [SerializeField]
     private TimeManager _timeManager;
 
-    private void Awake()
-    {
-        _timeManager.TimeUpdated += OnTimeUpdated;
-    }
     public void UpdateHint(string message)
     {
         _hint.text = message;
@@ -29,10 +25,25 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     {
         _dialogue.text = message;
     }
-
     private void OnTimeUpdated(TimeSpan newValue)
     {
         int wrappedHours = (int)newValue.TotalHours % 24;
         _countdownDisplay.text = $"{wrappedHours:00}:{newValue.Minutes:00}";
+    }
+
+    private void OndDeadLineApproaches()
+    {
+        _countdownDisplay.color = Color.red;
+    }
+    private void Awake()
+    {
+        _timeManager.TimeUpdated += OnTimeUpdated;
+        _timeManager.DeadLineApproaches += OndDeadLineApproaches;
+    }
+
+    private void OnDestroy()
+    {
+        _timeManager.TimeUpdated -= OnTimeUpdated;
+        _timeManager.DeadLineApproaches -= OndDeadLineApproaches;
     }
 }

@@ -1677,7 +1677,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _multiplier: 255
   _startingHour: 22
-  _deadLineHour: 8
+  _deadLineHour: 1
+  _approachThresholdInSeconds: 3600
 --- !u!4 &320691986
 Transform:
   m_ObjectHideFlags: 0
