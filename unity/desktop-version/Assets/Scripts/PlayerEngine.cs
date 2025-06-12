@@ -20,11 +20,18 @@ public class PlayerEngine : MonoBehaviour
     private float _ySensitivity = 30.0f;
     [SerializeField]
     private InteractionUserInterfaceManager _interactionUserInterfaceManager;
+    [SerializeField]
+    private TimeManager _timeManager;
 
     private InputManager _inputManager;
     private CharacterController _controller;
     private Vector3 _velocity;
     private bool _isGrounded;
+
+    private void Awake()
+    {
+        _timeManager.TimeOut += OnTimeOut;
+    }
 
     void Start()
     {
@@ -82,5 +89,14 @@ public class PlayerEngine : MonoBehaviour
         _xRotation = Mathf.Clamp(_xRotation, -80f, 80f);
         _eyes.transform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
         transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * _xSensitivity);
+    }
+
+    private void OnDestroy()
+    {
+        _timeManager.TimeOut -= OnTimeOut;
+    }
+    private void OnTimeOut()
+    { 
+        Time.timeScale = 0f;
     }
 }
