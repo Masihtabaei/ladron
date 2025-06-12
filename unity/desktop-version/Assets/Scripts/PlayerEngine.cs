@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
@@ -5,13 +6,13 @@ public class PlayerEngine : MonoBehaviour
 {
     [SerializeField]
     private float _gravity = -9.8f;
+    
     public float _speed = 5f;
     [SerializeField]
     private float _range = 3f;
     [SerializeField]
     private LayerMask _mask;
-    [SerializeField]
-    private Camera _eyes;
+    public Camera _eyes;
     [SerializeField]
     private float _xRotation = 0.0f;
     [SerializeField]
@@ -28,12 +29,16 @@ public class PlayerEngine : MonoBehaviour
 
     void Start()
     {
+        
         _controller = GetComponent<CharacterController>();
         _inputManager = GetComponent<InputManager>();
+        
+        
     }
-
+   
     void Update()
     {
+        
         _isGrounded = _controller.isGrounded;
         _interactionUserInterfaceManager.UpdateHint(string.Empty);
         Ray ray = new Ray(_eyes.transform.position, _eyes.transform.forward);
