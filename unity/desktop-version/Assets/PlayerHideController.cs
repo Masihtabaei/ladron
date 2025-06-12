@@ -15,7 +15,7 @@ public class PlayerHideController : MonoBehaviour, IInteractable
 
     public string GetHint()
     {
-        return "Press E to hide/bloom";
+        return "Press E to hide!";
     }
 
     public void React()

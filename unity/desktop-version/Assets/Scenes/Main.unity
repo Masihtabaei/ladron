@@ -12384,6 +12384,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room Light (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8375592668730319363, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14516,7 +14520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4544016557194791839, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6311891001163620562, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14568,7 +14572,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8375592668730319363, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375592668730319363, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
