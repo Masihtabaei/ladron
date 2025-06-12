@@ -16,6 +16,12 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     [SerializeField]
     private TimeManager _timeManager;
 
+    [SerializeField]
+    private GameObject _gameOverlay;
+
+    [SerializeField]
+    private GameObject _gameOverOverlay;
+
     public void UpdateHint(string message)
     {
         _hint.text = message;
@@ -35,15 +41,24 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     {
         _countdownDisplay.color = Color.red;
     }
+    private void OnTimeOut()
+    {
+        _gameOverlay.SetActive(false);
+        _gameOverOverlay.SetActive(true);
+    }
+
     private void Awake()
     {
         _timeManager.TimeUpdated += OnTimeUpdated;
         _timeManager.DeadLineApproaches += OndDeadLineApproaches;
+        _timeManager.TimeOut += OnTimeOut;
     }
 
     private void OnDestroy()
     {
         _timeManager.TimeUpdated -= OnTimeUpdated;
         _timeManager.DeadLineApproaches -= OndDeadLineApproaches;
+        _timeManager.TimeOut -= OnTimeOut;
     }
+
 }
