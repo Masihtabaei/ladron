@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class InteractionUserInterfaceManager : MonoBehaviour
 {
@@ -13,11 +14,11 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     private TextMeshProUGUI _countdownDisplay;
 
     [SerializeField]
-    private CountdownClock _countdownClock;
+    private TimeManager _timeManager;
 
     private void Awake()
     {
-        _countdownClock.TimeUpdated += OnTimeUpdated;
+        _timeManager.TimeUpdated += OnTimeUpdated;
     }
     public void UpdateHint(string message)
     {
@@ -29,10 +30,9 @@ public class InteractionUserInterfaceManager : MonoBehaviour
         _dialogue.text = message;
     }
 
-    private void OnTimeUpdated(float newValue)
+    private void OnTimeUpdated(TimeSpan newValue)
     {
-        float minutes = Mathf.FloorToInt(newValue / 60);
-        float seconds = Mathf.FloorToInt(newValue % 60);
-        _countdownDisplay.text = string.Format("{0:00}:{1:00}", minutes, seconds); ;
+        int wrappedHours = (int)newValue.TotalHours % 24;
+        _countdownDisplay.text = $"{wrappedHours:00}:{newValue.Minutes:00}";
     }
 }

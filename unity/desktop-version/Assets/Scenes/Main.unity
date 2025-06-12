@@ -1657,7 +1657,7 @@ GameObject:
   - component: {fileID: 320691986}
   - component: {fileID: 320691985}
   m_Layer: 0
-  m_Name: CountdownClock
+  m_Name: Time Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1675,8 +1675,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec614569459b174281bbe2e4d999ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _multiplier: 10
-  _counterInMinutes: 0.3
+  _multiplier: 255
+  _startingHour: 22
+  _deadLineHour: 8
 --- !u!4 &320691986
 Transform:
   m_ObjectHideFlags: 0
@@ -5114,8 +5115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hint: {fileID: 17668054}
+  _dialogue: {fileID: 0}
   _countdownDisplay: {fileID: 764075752}
-  _countdownClock: {fileID: 320691985}
+  _timeManager: {fileID: 320691985}
 --- !u!1 &897083315
 GameObject:
   m_ObjectHideFlags: 0
@@ -9470,8 +9472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa241ec0cd1c2e84293ddef1f66374b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightsOn: 0
-  light: {fileID: 1473284593}
 --- !u!65 &1480607251
 BoxCollider:
   m_ObjectHideFlags: 0
