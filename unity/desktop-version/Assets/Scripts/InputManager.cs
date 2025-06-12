@@ -14,13 +14,9 @@ public class InputManager : MonoBehaviour
         player = GetComponent<PlayerEngine>();
     }
 
-    void FixedUpdate()
-    {
-        player.Move(walking.Movement.ReadValue<Vector2>());
-    }
-
     private void LateUpdate()
     {
+        player.Move(walking.Movement.ReadValue<Vector2>());
         player.Look(walking.Visual.ReadValue<Vector2>());
     }
 
