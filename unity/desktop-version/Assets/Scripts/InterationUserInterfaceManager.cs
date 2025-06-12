@@ -28,7 +28,7 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     private void OnTimeUpdated(TimeSpan newValue)
     {
         int wrappedHours = (int)newValue.TotalHours % 24;
-        _countdownDisplay.text = $"{wrappedHours:00}:{newValue.Minutes:00}";
+        _countdownDisplay.text = $"CLOCK\n{wrappedHours:00}:{newValue.Minutes:00}";
     }
 
     private void OndDeadLineApproaches()
