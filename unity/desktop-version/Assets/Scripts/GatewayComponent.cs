@@ -19,12 +19,15 @@ public class GatewayComponent : MonoBehaviour
 
     public IEnumerator ForwardRequest(List<Message> messages, bool jsonRequired, Action<string> callback)
     {
+        foreach(Message m in messages)
+            Debug.Log("Shit: " + m.Content);
+
         GroqRequest requestBody = null;
         if (jsonRequired)
         {
             requestBody = new GroqRequest
             {
-                Model = "llama3-70b-8192",
+                Model = "llama3-8b-8192",
                 Messages = messages,
                 Stream = false,
                 Response_Format = new()
@@ -55,6 +58,7 @@ public class GatewayComponent : MonoBehaviour
             request.SetRequestHeader("Authorization", $"Bearer {_apiKey}");
 
             yield return request.SendWebRequest();
+            
 
             if (request.result == UnityWebRequest.Result.Success)
             {
