@@ -31,4 +31,15 @@ public class ElevatorButtonInteractionHandler : MonoBehaviour, IInteractable
         
 
     }
+
+
+    // This public method can be called from NarrationAudioController
+    public void OpenDoor()
+    {
+        // Stop any ongoing animation coroutines just in case
+        Debug.Log("OpenDoor() called on elevator.");
+        StopAllCoroutines();
+        StartCoroutine(OpenElevator());
+        animation.Play("Scene");
+    }
 }

@@ -28,6 +28,9 @@ public class PlayerEngine : MonoBehaviour
     private Vector3 _velocity;
     private bool _isGrounded;
 
+    public bool canMove = true;
+    public bool canInteract = true;  // add this near 'canMove'
+
     private void Awake()
     {
         _timeManager.TimeOut += OnTimeOut;
@@ -52,10 +55,13 @@ public class PlayerEngine : MonoBehaviour
             if (interactable != null)
             {
                 _interactionUserInterfaceManager.UpdateHint(interactable.GetHint());
-                if (_inputManager.walking.Interaction.triggered)
+
+                // Only allow interaction if canInteract is true
+                if (canInteract && _inputManager.walking.Interaction.triggered)
                 {
                     interactable.React();
                 }
+                    
             }
         }
     }
@@ -63,8 +69,13 @@ public class PlayerEngine : MonoBehaviour
     {
         _interactionUserInterfaceManager.UpdateHint(string.Empty);
     }
+
+
     public void Move(Vector2 input)
     {
+        if(!canMove)
+            return;
+
         Vector3 direction = Vector3.zero;
         direction.x = input.x;
         direction.z = input.y;
