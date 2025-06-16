@@ -1702,7 +1702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec614569459b174281bbe2e4d999ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _multiplier: 255
+  _multiplier: 60
   _startingHour: 22
   _deadLineHour: 8
   _approachThresholdInSeconds: 3600

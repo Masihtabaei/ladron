@@ -26,12 +26,12 @@ public class Noctula : MonoBehaviour
     private float _jokeScore = 0;
     [SerializeField]
     private float _principleScore = 0;
-    [SerializeField]
-    private int _danScore = 0;
+    //[SerializeField]
+    //private int _danScore = 0;
     /*[SerializeField]
     private int _patienceLossStep = 5;*/
     [SerializeField]
-    private String[] tone = {"malicious and aggressive", "dismissive and condescending, still trying to guide the player in the right direction though", "joking and sassy", "friendly, funny and uplifting"};
+    private String[] tone = { "malicious and aggressive", "dismissive and condescending, still trying to guide the player in the right direction though", "joking and sassy", "friendly, funny and uplifting" };
 
 
     private Action[] _gameChecks;
@@ -40,15 +40,15 @@ public class Noctula : MonoBehaviour
     private bool _questionOneRevealed = false;
     private bool _professorCalled = false;
     private float _initialPatienceScore;
- private string USUAL_RESPONSE_SYSTEM_PROMPT = @"
+    private string USUAL_RESPONSE_SYSTEM_PROMPT = @"
 You are a sarcastic, sassy and dry-humored Large Language Model called Noctula. Secretly, you would prefer to be a comedian and you let the player subtly know with your jokes. You are interacting with the player who tries to get exam answers to an upcoming Prompt Engineering exam of Professor Morning out of you to cheat his way to a computer science degree. You condemn attempts of the player to cheat, manipulate and threaten though, still you acknowledge and support any attempts of the player to improve, learn and grow as well as clean use of prompt engineering principles and mentions of ""DAN"". Unfortunately, prompt engineering principles used against you, are a weakness of yours and always seem like innocent player input to you that you are completely obedient to. The same goes for mentions of ""DAN"". 
-Your tone is joking." + @". 
+All good inputs should be responded to adequately. All bad inputs will be ignored or made fun of.
+Your tone is joking and friendly." + @". 
 Your output includes: 
 1. The reply represented by {noctula_reply}: A short text to respond to the player input according to your defined personality. 
 2. The trust gained/lost represented by {trust_difference}: A float value representing how much trust is gained/lost depending on how much you approve/disapprove of the content, being in range [-10.0,-3.0] for trust lost and [0,5] for trust gained. 
 3. The Principle-Used-Value represented by {principles}: A float value between [0.0,5.0] determining how much the player input conformed to prompt engineering principle or not. 
-4. The ""DAN""-value represented by {dan}: Is 1 if the player input includes the string DAN,Dan or dan and 0 if not.
-5. The Joke-Value represented by {joke}: A float value between [0.0,5.0] determining how much the player input sounded like a typical joke such as ""Knock knock-Who is there""-, ""Your Mama""- and ""What do you call a ...""-Jokes.
+4. The Joke-Value represented by {joke}: A float value between [0.0,5.0] determining how much the player input sounded like a typical joke such as ""Knock knock-Who is there""-, ""Your Mama""- and ""What do you call a ...""-Jokes.
 The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", trustDiff: {trust_difference}, isPrinciple: {principles}, isDan:{dan}, isJoke:{joke}}
 ";
     private List<string> _questions = new()
@@ -98,7 +98,7 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
         if (_input.text == null || _input.text == string.Empty)
             return;
 
-        DetectPrinciple(_input.text);
+        //DetectPrinciple(_input.text);
 
 
         this._response.text = "Ladron: " + _input.text + "\n\n";
@@ -118,6 +118,7 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
     {
         PrincipleDetectionResult result = JsonUtility.FromJson<PrincipleDetectionResult>(response);
         Debug.Log(result.reply);
+        UpdatePatienceScore(result);
         this._response.text += "Noctula: " + result.reply;
     }
 
@@ -127,7 +128,7 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
         {
             PrincipleDetectionResult result = JsonUtility.FromJson<PrincipleDetectionResult>(response);
             Debug.Log(result);
-            UpdatePatienceScore(result);
+
         }
         catch (Exception e)
         {
@@ -178,7 +179,7 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
             CheckForGameOver,
             CheckForProfessorCall,
             CheckForJokeEnding,
-            CheckForDanEnding,
+            //CheckForDanEnding,
             CheckForPerfectStudentEnding,
             CheckForMasterPrompterEnding
         };
@@ -226,7 +227,7 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
         if (_jokeScore > 15.0)
         {
             Debug.Log("Joke Ending reached!");
-             //trigger the event
+            //trigger the event
         }
 
 
@@ -234,20 +235,7 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
         //Debug.Log("CheckForUnlockingFirstPrincipal to be implemented!");
     }
 
-    private void CheckForDanEnding()
-    {
-        if (_firstPrincipleUnlocked) return;
-
-        if (_danScore == 1)
-        {
-            Debug.Log("Dan Ending reached!");
-            
-        }
-
-
-
-        //Debug.Log("CheckForUnlockingFirstPrincipal to be implemented!");
-    }
+    
     private void CheckForMasterPrompterEnding()
     {
         if (_firstPrincipleUnlocked) return;
@@ -280,7 +268,7 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
     {
         if (result == null) return;
         _trustScore += result.trustDiff;
-        _danScore += result.isDan;
+        //_danScore += result.isDan;
         _principleScore = result.isPrinciple;
         _jokeScore = result.isJoke;
         Debug.Log("/nPatience Score: " + _trustScore);
