@@ -15,6 +15,6 @@ public class DoorInteractionHandler : MonoBehaviour, IInteractable
     public void React()
     {
         isOpen = !isOpen;
-        _door.GetComponent<Animator>().SetBool("IsOpen", isOpen);
+        _door.GetComponent<Animator>().SetBool("IsOpened", isOpen);
     }
 }
