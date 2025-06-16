@@ -2219,7 +2219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077b30e954d02254fb8cd51d9c6ae62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _apiKey: 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
+  _apiKey: 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
 --- !u!4 &451391878
 Transform:
   m_ObjectHideFlags: 0
@@ -9506,8 +9506,16 @@ MonoBehaviour:
   _initialInput: {fileID: 1515826749}
   _startUserInterface: {fileID: 1259224544}
   _promptUserInterface: {fileID: 863123429}
-  _patienceScore: 20
-  _patienceLossStep: 5
+  _trustScore: 0
+  _jokeScore: 0
+  _principleScore: 0
+  _danScore: 0
+  tone:
+  - malicious and aggressive
+  - dismissive and condescending, still trying to guide the player in the right direction
+    though
+  - joking and sassy
+  - friendly, funny and uplifting
 --- !u!1001 &1484699621
 PrefabInstance:
   m_ObjectHideFlags: 0
