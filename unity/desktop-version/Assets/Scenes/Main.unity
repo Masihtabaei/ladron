@@ -8468,7 +8468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding: {x: -8, y: -5, z: -8, w: -5}
+  m_Padding: {x: 0, y: -5, z: 5, w: -5}
   m_Softness: {x: 0, y: 0}
 --- !u!114 &1114172840
 MonoBehaviour:
@@ -11199,7 +11199,6 @@ MonoBehaviour:
   _trustScore: 0
   _jokeScore: 0
   _principleScore: 0
-  _danScore: 0
   tone:
   - malicious and aggressive
   - dismissive and condescending, still trying to guide the player in the right direction
