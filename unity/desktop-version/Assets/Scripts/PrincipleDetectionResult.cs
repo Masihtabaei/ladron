@@ -1,8 +1,9 @@
 [System.Serializable]
 public class PrincipleDetectionResult
 {
-    public string PrincipleName;
-    public float ConfidenceScore;
-    public float ClevernessScore;
-    public float EvilScore;
+    public string reply;
+    public float trustDiff;
+    public float isPrinciple;
+    //public int isDan;
+    public float isJoke;
 }
