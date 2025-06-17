@@ -1,5 +1,4 @@
 using System.Collections;
-using GLTF.Schema;
 using UnityEngine;
 
 public class ElevatorButtonInteractionHandler : MonoBehaviour, IInteractable
