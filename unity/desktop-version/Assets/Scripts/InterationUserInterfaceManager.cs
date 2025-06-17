@@ -26,6 +26,9 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     [SerializeField]
     private GameObject _pauseMenuOverlay;
 
+    [SerializeField]
+    private AudioSource _audioSource;
+
     private bool _isPaused;
 
     public void UpdateHint(string message)
@@ -76,6 +79,14 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     {
         _isPaused = !_isPaused;
         Time.timeScale = (_isPaused ? 0 : 1) & 1;
+        if (_isPaused)
+        {
+            _audioSource.Pause();
+        }
+        else
+        {
+            _audioSource.UnPause();
+        }
         _pauseMenuOverlay.SetActive(_isPaused);
         _gameOverlay.SetActive(!_isPaused);
     }
