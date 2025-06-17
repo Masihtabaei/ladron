@@ -30,6 +30,7 @@ public class PlayerEngine : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1f;
         _timeManager.TimeOut += OnTimeOut;
     }
 
