@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class InteractionUserInterfaceManager : MonoBehaviour
 {
@@ -61,4 +62,8 @@ public class InteractionUserInterfaceManager : MonoBehaviour
         _timeManager.TimeOut -= OnTimeOut;
     }
 
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("Start");
+    }
 }
