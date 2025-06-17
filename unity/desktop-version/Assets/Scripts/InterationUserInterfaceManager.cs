@@ -23,6 +23,11 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     [SerializeField]
     private GameObject _gameOverOverlay;
 
+    [SerializeField]
+    private GameObject _pauseMenuOverlay;
+
+    private bool _isPaused;
+
     public void UpdateHint(string message)
     {
         _hint.text = message;
@@ -65,5 +70,18 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("Start");
+    }
+
+    public void TogglePause()
+    {
+        _isPaused = !_isPaused;
+        Time.timeScale = (_isPaused ? 0 : 1) & 1;
+        _pauseMenuOverlay.SetActive(_isPaused);
+        _gameOverlay.SetActive(!_isPaused);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }
