@@ -176,7 +176,7 @@ public class ProfessorMovement : MonoBehaviour
 
         if (playerIsHidden)
         {
-            yield return new WaitForSeconds(1.0f); // Professor looks around
+            yield return new WaitForSeconds(2.0f); // Professor looks around
             Debug.LogError("Player hidden → returning to start.");
             currentState = State.Returning;
             agent.SetDestination(initialPosition);
