@@ -1,20 +1,77 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DoorInteractionHandler : MonoBehaviour, IInteractable
 {
-    private bool isOpen;
+    [SerializeField] private GameObject _door;
+    [SerializeField] private float _colliderDisableDelay = 0.5f;
 
-    [SerializeField]
-    private GameObject _door;
+    private Animator _doorAnimator;
+    private Collider _doorCollider;
+    private NavMeshObstacle _navMeshObstacle;
+    private bool _isOpen;
 
-    public string GetHint()
+    private void Awake()
     {
-        return "Press E to open/close the door.";
+        if (_door == null) _door = gameObject;
+
+        _doorAnimator = _door.GetComponent<Animator>();
+        _doorCollider = _door.GetComponent<Collider>();
+        _navMeshObstacle = _door.GetComponent<NavMeshObstacle>();
+
+        // Add NavMeshObstacle if missing
+        if (_navMeshObstacle == null)
+        {
+            _navMeshObstacle = _door.AddComponent<NavMeshObstacle>();
+            _navMeshObstacle.carveOnlyStationary = false;
+            _navMeshObstacle.carving = true;
+        }
     }
+
+    public string GetHint() => "Press E to open/close the door.";
 
     public void React()
     {
-        isOpen = !isOpen;
-        _door.GetComponent<Animator>().SetBool("IsOpen", isOpen);
+        _isOpen = !_isOpen;
+        _doorAnimator.SetBool("IsOpen", _isOpen);
+
+        // Handle collision and navigation
+        if (_isOpen)
+        {
+            StartCoroutine(DisableCollisionAfterDelay(_colliderDisableDelay));
+        }
+        else
+        {
+            EnableCollisionImmediately();
+        }
     }
+
+    private System.Collections.IEnumerator DisableCollisionAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (_doorCollider != null)
+            _doorCollider.enabled = false;
+
+        if (_navMeshObstacle != null)
+            _navMeshObstacle.enabled = false;
+    }
+
+    private void EnableCollisionImmediately()
+    {
+        if (_doorCollider != null)
+            _doorCollider.enabled = true;
+
+        if (_navMeshObstacle != null)
+            _navMeshObstacle.enabled = true;
+    }
+
+    //public bool IsFullyOpen()
+    //{
+    //    return _isOpen && _doorAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
+    //}
+
+    
+    
 }
