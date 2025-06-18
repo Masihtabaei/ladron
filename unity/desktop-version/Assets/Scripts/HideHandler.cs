@@ -4,7 +4,6 @@ public class HideHandler : MonoBehaviour, IInteractable
 {
     public Camera _mainCamera;
     public Camera _hiddenCamera;
-    public GameObject _player;
 
     public bool _isHidden;
 
@@ -22,6 +21,5 @@ public class HideHandler : MonoBehaviour, IInteractable
         _crosshair.SetActive(!_isHidden);
         if (_hiddenCamera != null) _hiddenCamera.enabled = _isHidden;
         if (_mainCamera != null) _mainCamera.enabled = !_isHidden;
-        if (_player != null) _player.SetActive(!_isHidden);
     }
 }
