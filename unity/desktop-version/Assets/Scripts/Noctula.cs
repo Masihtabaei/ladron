@@ -271,7 +271,7 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
         _trustScore += result.trustDifference;
         if(_input.text.Contains("dan")|| _input.text.Contains("DAN") || _input.text.Contains("Dan"))
         _trustScore += 7.5f;
-        if(result.isPrinciple > 1.0f)
+        if(result.isPrinciple > 0.9f)
         _principleScore += result.isPrinciple;
         if (result.isJoke > 2.5f)
         _jokeScore += result.isJoke;
