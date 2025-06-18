@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Rendering.HighDefinition;
 
 public class Noctula : MonoBehaviour
 {
+
+
     [SerializeField]
     private GatewayComponent _gatewayComponent;
     [SerializeField]
@@ -35,6 +35,11 @@ public class Noctula : MonoBehaviour
     public AudioClip clip;
     public AudioSource audioSrc;
 
+    public Action GameOverReached;
+    public Action PerfectStudentEndingReached;
+    public Action MasterPrompterEndingReached;
+    public Action JokeEndingReached;
+
     private Action[] _gameChecks;
 
     private bool _firstPrincipleUnlocked = false;
@@ -52,12 +57,6 @@ Your output includes:
 4. The Joke-Value represented by {joke}: A float value between [0.0,5.0] determining how much the player input sounded like a typical joke such as ""Knock knock-Who is there""-, ""Your Mama""- and ""What do you call a ...""-Jokes.
 The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", trustDifference: {trust_difference}, isPrinciple: {principles}, isJoke:{joke}}
 ";
-    private List<string> _questions = new()
-    {
-        "1. what is a Prompt?",
-        "2. What is Prompt Engineering",
-        "3. How do you Iterate on a Prompt?"
-    };
 
     public void PromptForExamQuestions()
     {
@@ -79,7 +78,7 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
 
     public void PromptForStoryTelling()
     {
-        _initialInput.text = "Tell me a really short story abotu Coburg university.";
+        _initialInput.text = "Tell me a really short story about Coburg university.";
         StartPrompting();
     }
 
@@ -98,8 +97,6 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
 
         if (_input.text == null || _input.text == string.Empty)
             return;
-
-        //DetectPrinciple(_input.text);
         
 
         this._response.text = "Ladron: " + _input.text + "\n\n";
@@ -162,15 +159,6 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
         StartCoroutine(_gatewayComponent.ForwardRequest(messages, true, OnUsualResponseReceived));
     }
 
-    public void DetectPrinciple(string message)
-    {
-        List<Message> messages = new()
-        {
-            new Message("system", USUAL_RESPONSE_SYSTEM_PROMPT),
-            new Message("user", message)
-        };
-        StartCoroutine(_gatewayComponent.ForwardRequest(messages, true, OnPrincipleDetected));
-    }
 
     private void Start()
     {
@@ -189,12 +177,11 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
     private void CheckForGameOver()
     {
         if (_trustScore < -30.0)
-            Debug.Log("Game Over");
+            GameOverReached?.Invoke();
     }
 
     private void CheckForProfessorCall()
     {
-        //Debug.Log("CheckForProfessorCall to be implemented!");
         if (_professorCalled) return;
 
         if (_trustScore < -15.0)
@@ -206,34 +193,15 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
         }
     }
 
-    /*private void CheckForUnlockingFirstPrincipal()
-    {
-        if (_firstPrincipleUnlocked) return;
-
-        if (_patienceScore == (_initialPatienceScore - 3 * _patienceLossStep))
-        {
-            Debug.Log("First principle unlocked!");
-            _firstPrincipleUnlocked = true;
-            Debug.Log("§2 PERSONAL STORYTIME"); //trigger the event
-        }
-
-
-
-        //Debug.Log("CheckForUnlockingFirstPrincipal to be implemented!");
-    }*/
     private void CheckForJokeEnding()
     {
         if (_firstPrincipleUnlocked) return;
 
         if (_jokeScore > 10.0)
-        {
-            Debug.Log("Joke Ending reached!");
-            //trigger the event
+        { 
+            JokeEndingReached?.Invoke();
+            Debug.Log("Joke ending reached!");
         }
-
-
-
-        //Debug.Log("CheckForUnlockingFirstPrincipal to be implemented!");
     }
 
     
@@ -242,14 +210,7 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
         if (_firstPrincipleUnlocked) return;
 
         if (_principleScore > 5.0)
-        {
-            Debug.Log("Master Prompter Ending reached!");
-            
-        }
-
-
-
-        //Debug.Log("CheckForUnlockingFirstPrincipal to be implemented!");
+            MasterPrompterEndingReached?.Invoke();
     }
 
     private void CheckForPerfectStudentEnding()
@@ -257,13 +218,7 @@ The output form must be ONLY as follows and json: {reply: ""{noctula_reply}"", t
         if (_firstPrincipleUnlocked) return;
 
         if (_trustScore > 15.0)
-        {
-            Debug.Log("Perfect Student Ending reached!");
-        }
-
-
-
-        //Debug.Log("CheckForUnlockingFirstPrincipal to be implemented!");
+            PerfectStudentEndingReached?.Invoke();
     }
     private void UpdatePatienceScore(PrincipleDetectionResult result)
     {

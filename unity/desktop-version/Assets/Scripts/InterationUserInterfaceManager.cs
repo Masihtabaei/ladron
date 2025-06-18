@@ -27,7 +27,20 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     private GameObject _pauseMenuOverlay;
 
     [SerializeField]
+    private GameObject _perfectStudentOverlay;
+
+    [SerializeField]
+    private GameObject _masterPrompterOverlay;
+
+    [SerializeField]
+    private GameObject _jokeOverlay;
+
+    [SerializeField]
     private AudioSource _audioSource;
+
+
+    [SerializeField]
+    private Noctula _noctula;
 
     private bool _isPaused;
 
@@ -52,6 +65,7 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     }
     private void OnTimeOut()
     {
+        Time.timeScale = 0;
         _gameOverlay.SetActive(false);
         _gameOverOverlay.SetActive(true);
     }
@@ -61,6 +75,10 @@ public class InteractionUserInterfaceManager : MonoBehaviour
         _timeManager.TimeUpdated += OnTimeUpdated;
         _timeManager.DeadLineApproaches += OndDeadLineApproaches;
         _timeManager.TimeOut += OnTimeOut;
+        _noctula.GameOverReached += OnTimeOut;
+        _noctula.PerfectStudentEndingReached += OnPerfectEndingReached;
+        _noctula.MasterPrompterEndingReached += OnMasterPrompterEndingReached;
+        _noctula.JokeEndingReached += OnJokeEndingReached;
     }
 
     private void OnDestroy()
@@ -68,6 +86,11 @@ public class InteractionUserInterfaceManager : MonoBehaviour
         _timeManager.TimeUpdated -= OnTimeUpdated;
         _timeManager.DeadLineApproaches -= OndDeadLineApproaches;
         _timeManager.TimeOut -= OnTimeOut;
+        _noctula.GameOverReached -= OnTimeOut;
+        _noctula.PerfectStudentEndingReached -= OnPerfectEndingReached;
+        _noctula.MasterPrompterEndingReached -= OnMasterPrompterEndingReached;
+        _noctula.JokeEndingReached -= OnJokeEndingReached;
+
     }
 
     public void ReturnToMainMenu()
@@ -89,6 +112,27 @@ public class InteractionUserInterfaceManager : MonoBehaviour
         }
         _pauseMenuOverlay.SetActive(_isPaused);
         _gameOverlay.SetActive(!_isPaused);
+    }
+
+    public void OnPerfectEndingReached()
+    {
+        Time.timeScale = 0;
+        _gameOverlay.SetActive(false);
+        _perfectStudentOverlay.SetActive(true);
+    }
+
+    public void OnMasterPrompterEndingReached()
+    {
+        Time.timeScale = 0;
+        _gameOverlay.SetActive(false);
+        _masterPrompterOverlay.SetActive(true);
+    }
+
+    public void OnJokeEndingReached()
+    {
+        Time.timeScale = 0;
+        _gameOverlay.SetActive(false);
+        _jokeOverlay.SetActive(true);
     }
 
     public void Exit()
