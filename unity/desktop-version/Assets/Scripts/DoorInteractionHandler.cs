@@ -72,8 +72,8 @@ public class DoorInteractionHandler : MonoBehaviour, IInteractable
     {
         yield return new WaitForSeconds(delay);
 
-        if (_doorCollider != null)
-            _doorCollider.enabled = false;
+        //if (_doorCollider != null)
+        //    _doorCollider.enabled = false;
 
         if (_navMeshObstacle != null)
             _navMeshObstacle.enabled = false;

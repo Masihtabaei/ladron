@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Professor
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3b60e7e449dc2004c91d8b55d23143eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 3b60e7e449dc2004c91d8b55d23143eb, type: 3}
       propertyPath: m_Controller
       value: 
@@ -547,10 +551,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1572670562847827360, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
-      propertyPath: light
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 468586686603680170, guid: 0b9135a28e106174f9f0aa0ea23a9b53, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.774
@@ -594,6 +594,10 @@ PrefabInstance:
     - target: {fileID: 993907621579522832, guid: 0b9135a28e106174f9f0aa0ea23a9b53, type: 3}
       propertyPath: m_Name
       value: Wall Light (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572670562847827360, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: light
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3621,10 +3625,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1572670562847827360, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
-      propertyPath: light
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 468586686603680170, guid: 0b9135a28e106174f9f0aa0ea23a9b53, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.699
@@ -3668,6 +3668,10 @@ PrefabInstance:
     - target: {fileID: 993907621579522832, guid: 0b9135a28e106174f9f0aa0ea23a9b53, type: 3}
       propertyPath: m_Name
       value: Wall Light (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572670562847827360, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: light
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3818,26 +3822,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1572670562847827360, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
-      propertyPath: light
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1572670562847827360, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
-      propertyPath: lightsOn
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544016557194791839, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375592668730319363, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375592668730319363, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 468586686603680170, guid: 0b9135a28e106174f9f0aa0ea23a9b53, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.058
@@ -3889,6 +3873,26 @@ PrefabInstance:
     - target: {fileID: 7731485471377276226, guid: 0b9135a28e106174f9f0aa0ea23a9b53, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572670562847827360, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: light
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572670562847827360, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: lightsOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544016557194791839, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375592668730319363, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375592668730319363, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11622,18 +11626,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1572670562847827360, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
-      propertyPath: light
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544016557194791839, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375592668730319363, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 468586686603680170, guid: 0b9135a28e106174f9f0aa0ea23a9b53, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.214
@@ -11677,6 +11669,18 @@ PrefabInstance:
     - target: {fileID: 993907621579522832, guid: 0b9135a28e106174f9f0aa0ea23a9b53, type: 3}
       propertyPath: m_Name
       value: Wall Light (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572670562847827360, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: light
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544016557194791839, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375592668730319363, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18812,14 +18816,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1572670562847827360, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
-      propertyPath: light
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375592668730319363, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 468586686603680170, guid: 0b9135a28e106174f9f0aa0ea23a9b53, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.766
@@ -18863,6 +18859,14 @@ PrefabInstance:
     - target: {fileID: 993907621579522832, guid: 0b9135a28e106174f9f0aa0ea23a9b53, type: 3}
       propertyPath: m_Name
       value: Wall Light (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572670562847827360, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: light
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375592668730319363, guid: 6e346ef110e8b9c4087e722f8fc8accc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
