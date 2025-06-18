@@ -82,23 +82,34 @@ public class PlayerEngine : MonoBehaviour
 
     public void Move(Vector2 input)
     {
-        if(!canMove)
+        if (!canMove)
             return;
 
         Vector3 direction = Vector3.zero;
         direction.x = input.x;
         direction.z = input.y;
+        Vector3 horizontalVelocity = transform.TransformDirection(direction) * _speed;
 
-        _controller.Move(transform.TransformDirection(direction) * _speed * Time.deltaTime);
-
-
-        _velocity.y = _gravity * Time.deltaTime;
-        if (_isGrounded && _velocity.y < 0)
+        if (_isGrounded)
         {
-            _velocity.y = -2.0f;
+            _velocity.y = -2f;
         }
-        _controller.Move(_velocity * Time.deltaTime);
+        else
+        {
+            _velocity.y += _gravity * Time.deltaTime;
+        }
+
+        if (_velocity.y > 0)
+        {
+            _velocity.y = 0;
+        }
+
+        Vector3 move = horizontalVelocity + new Vector3(0, _velocity.y, 0);
+
+        _controller.Move(move * Time.deltaTime);
     }
+
+
 
     public void Look(Vector2 input)
     {
