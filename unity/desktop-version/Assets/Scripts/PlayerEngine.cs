@@ -1,4 +1,3 @@
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class PlayerEngine : MonoBehaviour
@@ -33,6 +32,7 @@ public class PlayerEngine : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1f;
         _timeManager.TimeOut += OnTimeOut;
     }
 
@@ -63,6 +63,15 @@ public class PlayerEngine : MonoBehaviour
                 }
                     
             }
+        }
+        if (_inputManager.walking.Inbox.triggered)
+        {
+            Debug.Log("Inbox opened");
+        }
+
+        if (_inputManager.walking.Pause.triggered)
+        {
+            _interactionUserInterfaceManager.TogglePause();
         }
     }
     private void OnDisable()

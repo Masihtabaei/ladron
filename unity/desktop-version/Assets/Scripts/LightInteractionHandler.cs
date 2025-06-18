@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class LightInteractionHandler : MonoBehaviour, IInteractable
 {
-    public bool lightsOn;
+    private bool _lightsOn;
+    private Light _source;
 
-    [SerializeField]
-    private new Light light;
-
+    private void Awake()
+    {
+        _lightsOn = false;
+        _source = GetComponent<Light>();
+    }
     public string GetHint()
     {
-        if (lightsOn)
+        if (_lightsOn)
         {
             return "Press E to turn lights off.";
         }
@@ -19,15 +22,7 @@ public class LightInteractionHandler : MonoBehaviour, IInteractable
 
     public void React()
     {
-        if (lightsOn)
-        {
-            lightsOn = false;
-            light.enabled = false;
-        }
-        else
-        {
-            lightsOn = true;
-            light.enabled = true;
-        }
+        _lightsOn = !_lightsOn;
+        _source.enabled = !_source.enabled;
     }
 }

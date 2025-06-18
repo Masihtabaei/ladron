@@ -126,6 +126,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""3506f0f7-e52c-44b2-ba0d-051fbdc07b5b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inbox"",
+                    ""type"": ""Button"",
+                    ""id"": ""3ac1f05c-c7d0-42cd-8928-f4db393211d5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -216,6 +234,39 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Interaction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3541521b-4e05-4ecd-9908-8c02345960ef"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11e58a45-73bd-4e95-8ef6-0bf77c36c4ec"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inbox"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48c1b981-466f-490d-b527-2bfef65f04f8"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inbox"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -228,6 +279,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Walking_Jump = m_Walking.FindAction("Jump", throwIfNotFound: true);
         m_Walking_Visual = m_Walking.FindAction("Visual", throwIfNotFound: true);
         m_Walking_Interaction = m_Walking.FindAction("Interaction", throwIfNotFound: true);
+        m_Walking_Pause = m_Walking.FindAction("Pause", throwIfNotFound: true);
+        m_Walking_Inbox = m_Walking.FindAction("Inbox", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -312,6 +365,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Walking_Jump;
     private readonly InputAction m_Walking_Visual;
     private readonly InputAction m_Walking_Interaction;
+    private readonly InputAction m_Walking_Pause;
+    private readonly InputAction m_Walking_Inbox;
     /// <summary>
     /// Provides access to input actions defined in input action map "Walking".
     /// </summary>
@@ -339,6 +394,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Walking/Interaction".
         /// </summary>
         public InputAction @Interaction => m_Wrapper.m_Walking_Interaction;
+        /// <summary>
+        /// Provides access to the underlying input action "Walking/Pause".
+        /// </summary>
+        public InputAction @Pause => m_Wrapper.m_Walking_Pause;
+        /// <summary>
+        /// Provides access to the underlying input action "Walking/Inbox".
+        /// </summary>
+        public InputAction @Inbox => m_Wrapper.m_Walking_Inbox;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -377,6 +440,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interaction.started += instance.OnInteraction;
             @Interaction.performed += instance.OnInteraction;
             @Interaction.canceled += instance.OnInteraction;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+            @Inbox.started += instance.OnInbox;
+            @Inbox.performed += instance.OnInbox;
+            @Inbox.canceled += instance.OnInbox;
         }
 
         /// <summary>
@@ -400,6 +469,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interaction.started -= instance.OnInteraction;
             @Interaction.performed -= instance.OnInteraction;
             @Interaction.canceled -= instance.OnInteraction;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+            @Inbox.started -= instance.OnInbox;
+            @Inbox.performed -= instance.OnInbox;
+            @Inbox.canceled -= instance.OnInbox;
         }
 
         /// <summary>
@@ -468,5 +543,19 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteraction(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Inbox" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInbox(InputAction.CallbackContext context);
     }
 }
