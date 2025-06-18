@@ -1359,15 +1359,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ali
-
-    Alex
-
-    Alma
-
-    Jenny
-
-    Masih'
+  m_text: "Ali\nAlex\nAlma\nJenny\nMasih\nMusic by Paul M\xFCller"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0c356d0823db51f45a551407390b318f, type: 2}
   m_sharedMaterial: {fileID: 5509997337053326548, guid: 0c356d0823db51f45a551407390b318f, type: 2}
@@ -1394,7 +1386,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.9
+  m_fontSize: 24.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

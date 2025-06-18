@@ -210,7 +210,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13772179}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &13772181
 Camera:
   m_ObjectHideFlags: 0
@@ -4326,7 +4326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3486220427467637855, guid: a0d6ea507fa9c9e4cb420b6cf8fdeaa3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.798
+      value: 0.268
       objectReference: {fileID: 0}
     - target: {fileID: 3486220427467637855, guid: a0d6ea507fa9c9e4cb420b6cf8fdeaa3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7499,6 +7499,7 @@ GameObject:
   - component: {fileID: 861925394}
   - component: {fileID: 861925396}
   - component: {fileID: 861925395}
+  - component: {fileID: 861925397}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -7636,6 +7637,14 @@ MonoBehaviour:
   _ySensitivity: 30
   _interactionUserInterfaceManager: {fileID: 895472523}
   _timeManager: {fileID: 320691985}
+--- !u!81 &861925397
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861925389}
+  m_Enabled: 1
 --- !u!1 &863123429
 GameObject:
   m_ObjectHideFlags: 0
@@ -9043,6 +9052,8 @@ MonoBehaviour:
   _player: {fileID: 861925396}
   _fixedCamera: {fileID: 965072723}
   _crosshair: {fileID: 548009923}
+  _atPlayer: {fileID: 861925397}
+  _atComputer: {fileID: 965072725}
 --- !u!1 &991356002
 GameObject:
   m_ObjectHideFlags: 0
@@ -12575,8 +12586,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1393495348}
   - component: {fileID: 1393495351}
-  - component: {fileID: 1393495347}
   - component: {fileID: 1393495350}
+  - component: {fileID: 1393495347}
   - component: {fileID: 1393495349}
   m_Layer: 0
   m_Name: BackgroundMusic
@@ -13773,12 +13784,21 @@ MonoBehaviour:
   _trustScore: 0
   _jokeScore: 0
   _principleScore: 0
+  _danScore: 0
   tone:
   - malicious and aggressive
   - dismissive and condescending, still trying to guide the player in the right direction
     though
   - joking and sassy
   - friendly, funny and uplifting
+  clips:
+  - {fileID: 8300000, guid: 1afba23abeaf1ca4c929793ab39755cc, type: 3}
+  - {fileID: 8300000, guid: d3fa67ce0d315fd429aff47509501002, type: 3}
+  - {fileID: 8300000, guid: 997f54bcee95eff4abc8ce2e370a2288, type: 3}
+  - {fileID: 8300000, guid: 071664dfbc632504fa7cfc035252ce4c, type: 3}
+  - {fileID: 8300000, guid: e379e423404d32240802ac4b5388511e, type: 3}
+  clip: {fileID: 0}
+  audioSrc: {fileID: 1393495347}
 --- !u!1001 &1484699621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14065,6 +14085,127 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1502336092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1502336095}
+  - component: {fileID: 1502336094}
+  - component: {fileID: 1502336093}
+  m_Layer: 0
+  m_Name: Area Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1502336093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502336092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+--- !u!108 &1502336094
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502336092}
+  m_Enabled: 1
+  serializedVersion: 11
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 2
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
+--- !u!4 &1502336095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502336092}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 11.26, y: 0.595, z: -5.781}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1514088842
 GameObject:
   m_ObjectHideFlags: 0
@@ -17723,6 +17864,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 2.891
       objectReference: {fileID: 0}
+    - target: {fileID: 3663409532469676069, guid: dbdddcf159415954e8003b11c8c64625, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3663683419972733043, guid: dbdddcf159415954e8003b11c8c64625, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.592
@@ -19601,3 +19746,4 @@ SceneRoots:
   - {fileID: 378805136}
   - {fileID: 846463546}
   - {fileID: 1019874087}
+  - {fileID: 1502336095}
