@@ -210,7 +210,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13772179}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &13772181
 Camera:
   m_ObjectHideFlags: 0
@@ -7499,6 +7499,7 @@ GameObject:
   - component: {fileID: 861925394}
   - component: {fileID: 861925396}
   - component: {fileID: 861925395}
+  - component: {fileID: 861925397}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -7636,6 +7637,14 @@ MonoBehaviour:
   _ySensitivity: 30
   _interactionUserInterfaceManager: {fileID: 895472523}
   _timeManager: {fileID: 320691985}
+--- !u!81 &861925397
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861925389}
+  m_Enabled: 1
 --- !u!1 &863123429
 GameObject:
   m_ObjectHideFlags: 0
@@ -9043,6 +9052,8 @@ MonoBehaviour:
   _player: {fileID: 861925396}
   _fixedCamera: {fileID: 965072723}
   _crosshair: {fileID: 548009923}
+  _atPlayer: {fileID: 861925397}
+  _atComputer: {fileID: 965072725}
 --- !u!1 &991356002
 GameObject:
   m_ObjectHideFlags: 0
@@ -12575,8 +12586,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1393495348}
   - component: {fileID: 1393495351}
-  - component: {fileID: 1393495347}
   - component: {fileID: 1393495350}
+  - component: {fileID: 1393495347}
   - component: {fileID: 1393495349}
   m_Layer: 0
   m_Name: BackgroundMusic
@@ -13773,12 +13784,21 @@ MonoBehaviour:
   _trustScore: 0
   _jokeScore: 0
   _principleScore: 0
+  _danScore: 0
   tone:
   - malicious and aggressive
   - dismissive and condescending, still trying to guide the player in the right direction
     though
   - joking and sassy
   - friendly, funny and uplifting
+  clips:
+  - {fileID: 8300000, guid: 1afba23abeaf1ca4c929793ab39755cc, type: 3}
+  - {fileID: 8300000, guid: d3fa67ce0d315fd429aff47509501002, type: 3}
+  - {fileID: 8300000, guid: 997f54bcee95eff4abc8ce2e370a2288, type: 3}
+  - {fileID: 8300000, guid: 071664dfbc632504fa7cfc035252ce4c, type: 3}
+  - {fileID: 8300000, guid: e379e423404d32240802ac4b5388511e, type: 3}
+  clip: {fileID: 0}
+  audioSrc: {fileID: 1393495347}
 --- !u!1001 &1484699621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17846,7 +17866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3663409532469676069, guid: dbdddcf159415954e8003b11c8c64625, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3663683419972733043, guid: dbdddcf159415954e8003b11c8c64625, type: 3}
       propertyPath: m_LocalPosition.z
