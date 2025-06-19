@@ -43,6 +43,8 @@ public class Noctula : MonoBehaviour
 
     private Action[] _gameChecks;
 
+    private bool playerIsAtChair = false;
+
     private bool _firstPrincipleUnlocked = false;
     private bool _questionOneRevealed = false;
     private bool _professorCalled = false;
@@ -104,7 +106,7 @@ The output form must be ONLY as follows and json: {reply: ""{reply}"", trustDiff
         
         _input.text = string.Empty;
 
-        _input.ActivateInputField();
+        //_input.ActivateInputField();
         if (!EventSystem.current.alreadySelecting)
         {
             EventSystem.current.SetSelectedGameObject(_input.gameObject, null);
@@ -232,6 +234,26 @@ The output form must be ONLY as follows and json: {reply: ""{reply}"", trustDiff
         if (_trustScore > 15.0f)
             PerfectStudentEndingReached?.Invoke();
     }
+
+
+    public void PlayerSatDown()
+    {
+        playerIsAtChair = true;
+        _input.ActivateInputField();
+        if (!EventSystem.current.alreadySelecting)
+        {
+            EventSystem.current.SetSelectedGameObject(_input.gameObject, null);
+        }
+    }
+
+    public void PlayerLeftChair()
+    {
+        playerIsAtChair = false;
+        // Deactivate InputField so no accidental input happens:
+        EventSystem.current.SetSelectedGameObject(null);
+        _input.DeactivateInputField();
+    }
+
     private void UpdatePatienceScore(PrincipleDetectionResult result)
     {
         if (result == null) return;

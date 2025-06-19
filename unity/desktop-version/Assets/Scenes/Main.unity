@@ -10090,6 +10090,7 @@ MonoBehaviour:
   _crosshair: {fileID: 548009923}
   _atPlayer: {fileID: 861925397}
   _atComputer: {fileID: 965072725}
+  _noctula: {fileID: 1478155873}
 --- !u!1 &991356002
 GameObject:
   m_ObjectHideFlags: 0

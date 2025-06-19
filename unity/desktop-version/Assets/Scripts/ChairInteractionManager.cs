@@ -15,6 +15,9 @@ public class ChairInteractionManager : MonoBehaviour, IInteractable
     [SerializeField]
     private AudioListener _atComputer;
 
+    [SerializeField]
+    private Noctula _noctula;
+
 
 
     private bool _isSitting = false;
@@ -38,6 +41,14 @@ public class ChairInteractionManager : MonoBehaviour, IInteractable
         ;
         if (!_isSitting && EventSystem.current != null) EventSystem.current.SetSelectedGameObject(null);
 
+        if (_isSitting)
+        {
+            _noctula.PlayerSatDown();
+        }
+        else
+        {
+            _noctula.PlayerLeftChair();
+        }
 
     }
   }
