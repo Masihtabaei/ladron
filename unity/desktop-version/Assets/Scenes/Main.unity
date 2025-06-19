@@ -11154,6 +11154,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 335715110992909045, guid: 26b8166c4f06708408d1d04ab4ee35d8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5042380748437594471, guid: 26b8166c4f06708408d1d04ab4ee35d8, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0013
@@ -14495,7 +14499,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e379e423404d32240802ac4b5388511e, type: 3}
   clip: {fileID: 0}
   audioSrc: {fileID: 1393495347}
-  _inbox: {fileID: 991356002}
+  _interactionUserInterfaceManager: {fileID: 895472523}
   _inboxText: {fileID: 688653300}
   _giveMeExamQuestionsButton: {fileID: 144320928}
   _tellMeJokeButton: {fileID: 981704342}
