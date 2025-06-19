@@ -12,7 +12,7 @@ public class GatewayComponent : MonoBehaviour
 
     public Action<PrincipleDetectionResult> PrincipleDetected;
     public const string ENDPOINT_URL = "https://api.groq.com/openai/v1/chat/completions";
-    private String emergencyReply = "{reply:'LOL, sorry, I got distracted talking to someone with more brain mass than you. Could you repeat your yapping again?',trustDiffernece:0.0, principle:0.0, joke:0.0}";
+    private string emergencyReply = "{reply:'LOL, sorry, I got distracted talking to someone with more brain mass than you. Could you repeat your yapping again?', trustDiffernece:0.0, principle:0.0, joke:0.0}";
 
     [Header("API Key")]
     [SerializeField]
@@ -67,35 +67,9 @@ public class GatewayComponent : MonoBehaviour
             }
             else
             {
-                yield return request.SendWebRequest();
-
-                if (request.result == UnityWebRequest.Result.Success)
-                {
-                    string response = request.downloadHandler.text;
-                    JObject parsed = JObject.Parse(response);
-                    string content = parsed["choices"]?[0]?["message"]?["content"]?.ToString();
-                    Debug.Log("LLM JSON result: " + content);
-                    callback?.Invoke(content);
-                }
-                else
-                {
-                    yield return request.SendWebRequest();
-
-                    if (request.result == UnityWebRequest.Result.Success)
-                    {
-                        string response = request.downloadHandler.text;
-                        JObject parsed = JObject.Parse(response);
-                        string content = parsed["choices"]?[0]?["message"]?["content"]?.ToString();
-                        Debug.Log("LLM JSON result: " + content);
-                        callback?.Invoke(content);
-                    }
-                    else
-                    {
-                        Debug.LogError("Error: " + request.error);
-                        Debug.LogError("Response: " + request.downloadHandler.text);
-                        callback?.Invoke(emergencyReply);
-                    }
-                }
+                Debug.LogError("Error: " + request.error);
+                Debug.LogError("Response: " + request.downloadHandler.text);
+                callback?.Invoke(emergencyReply);
             }
         }
     }
