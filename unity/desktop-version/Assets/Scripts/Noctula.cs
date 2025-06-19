@@ -56,6 +56,9 @@ public class Noctula : MonoBehaviour
     private Button _tellStoryButton;
 
     [SerializeField]
+    private GameObject _professor;
+
+    [SerializeField]
     private TMP_InputField _promptMessageField;
 
     public Action GameOverReached;
@@ -225,14 +228,8 @@ The output form must be ONLY as follows and json: {reply: ""{reply}"", trustDiff
 
             _inboxText.text = "Professor Morning is on the way. HIDE yourself before it is too late.";
             _interactionUserInterfaceManager.ToggleInbox();
-            if (professorMovement != null)
-            {
-                professorMovement.SearchForPlayer();
-            }
-            else
-            {
-                Debug.LogWarning("ProfessorMovement reference is missing!");
-            }
+            _professor.SetActive(true);
+            _professor.GetComponent<ProfessorMovement>().SearchForPlayer();
         }
     }
 

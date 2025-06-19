@@ -50,19 +50,11 @@ public class ProfessorMovement : MonoBehaviour
 
     public float maxOverlayDistance = 10f;  // tune this for your level
 
-    [SerializeField]
-    private HidingHandler[] hidingHandlers;
-
-    
-
-
-
-    void Start()
+   
+    void Awake()
     {
         initialPosition = transform.position;
         agent = GetComponent<NavMeshAgent>();
-        //because we have more than one spot 
-        hidingHandlers = FindObjectsByType<HidingHandler>(FindObjectsSortMode.None);
 
         // Reset overlay here:
         ResetOverlayEffect();
