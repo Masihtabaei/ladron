@@ -872,7 +872,6 @@ MonoBehaviour:
   playerTransform: {fileID: 861925393}
   overlayMaterial: {fileID: 2100000, guid: 9e4aa3439e95c094d8ca07e94f033554, type: 2}
   maxOverlayDistance: 10
-  hidingHandlers: []
 --- !u!195 &69691076
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3896,6 +3895,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 20855033514226770, guid: bfa974a01b4cbd94eb18f3e7956f9aca, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1137191687032992317, guid: bfa974a01b4cbd94eb18f3e7956f9aca, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
