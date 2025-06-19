@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3b60e7e449dc2004c91d8b55d23143eb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 3b60e7e449dc2004c91d8b55d23143eb, type: 3}
       propertyPath: m_Controller
@@ -868,6 +868,7 @@ MonoBehaviour:
   playerTransform: {fileID: 861925393}
   overlayMaterial: {fileID: 2100000, guid: 9e4aa3439e95c094d8ca07e94f033554, type: 2}
   maxOverlayDistance: 10
+  hidingHandlers: []
 --- !u!195 &69691076
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -8014,6 +8015,7 @@ MonoBehaviour:
   _crosshair: {fileID: 548009923}
   _atPlayer: {fileID: 861925397}
   _atHidingSpot: {fileID: 1561481042}
+  professorMovement: {fileID: 0}
 --- !u!1001 &803342394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10778,6 +10780,7 @@ MonoBehaviour:
   _crosshair: {fileID: 548009923}
   _atPlayer: {fileID: 861925397}
   _atHidingSpot: {fileID: 107925990}
+  professorMovement: {fileID: 0}
 --- !u!1 &1067710970
 GameObject:
   m_ObjectHideFlags: 0
@@ -15116,6 +15119,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e379e423404d32240802ac4b5388511e, type: 3}
   clip: {fileID: 0}
   audioSrc: {fileID: 1393495347}
+  professorMovement: {fileID: 69691075}
 --- !u!1001 &1484699621
 PrefabInstance:
   m_ObjectHideFlags: 0

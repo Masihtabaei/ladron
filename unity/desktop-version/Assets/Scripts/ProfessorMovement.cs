@@ -1,4 +1,5 @@
-﻿using Unity.VisualScripting;
+﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +15,7 @@ public class ProfessorMovement : MonoBehaviour
     
     private enum State
     {
+        Idle,
         GoingToDoor,
         WaitingAtDoor,
         EnteringRoom,
@@ -22,7 +24,7 @@ public class ProfessorMovement : MonoBehaviour
         ReachedDestination
     }
 
-    private State currentState = State.GoingToDoor;
+    private State currentState = State.Idle;
 
     private Vector3 initialPosition;
 
@@ -38,24 +40,46 @@ public class ProfessorMovement : MonoBehaviour
 
     public float maxOverlayDistance = 10f;  // tune this for your level
 
+    [SerializeField]
+    private HidingHandler[] hidingHandlers;
+
+    public Action GameOverReached;
+
 
 
     void Start()
     {
         initialPosition = transform.position;
         agent = GetComponent<NavMeshAgent>();
+        //because we have more than one spot 
+        hidingHandlers = FindObjectsByType<HidingHandler>(FindObjectsSortMode.None);
+
+        // Reset overlay here:
+        ResetOverlayEffect();
+
+
         //SearchForPlayer();
     }
 
-    
+
 
     void Update()
     {
         Debug.Log($"Current State: {currentState}, Path Status: {agent.pathStatus}, Remaining Distance: {agent.remainingDistance}");
+        bool isAtInitialPosition = Vector3.Distance(transform.position, initialPosition) < 0.1f;
 
         switch (currentState)
         {
+            case State.Idle:
+                
+                professorAnimator.SetBool("shouldWalk", false);
+
+                ResetOverlayEffect();
+
+                break;
+
             case State.GoingToDoor:
+                UpdateOverlayEffect();
                 if (!agent.pathPending && agent.remainingDistance < 0.5f)
                 {
                     currentState = State.WaitingAtDoor;
@@ -91,6 +115,7 @@ public class ProfessorMovement : MonoBehaviour
                 break;
 
             case State.Returning:
+                UpdateOverlayEffect();
                 if (!agent.pathPending && agent.remainingDistance < 0.5f)
                 {
                     currentState = State.ReachedDestination;
@@ -103,6 +128,10 @@ public class ProfessorMovement : MonoBehaviour
                 break;
 
             case State.ReachedDestination:
+                UpdateOverlayEffect();
+                // Check if player is hidden in any spot
+                playerIsHidden = IsPlayerHidden();
+
                 if (!playerIsHidden)
                 {
                     // Look at player
@@ -113,15 +142,19 @@ public class ProfessorMovement : MonoBehaviour
                         Quaternion targetRotation = Quaternion.LookRotation(lookDir);
                         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2f);
                     }
-                    //------------------
-                    //ToDo
-                    //Game over Logic here
-                    //------------------
+                    
+                    GameOverReached?.Invoke();
                 }
                 break;
         }
+        if(isAtInitialPosition)
+            ResetOverlayEffect();
 
-        // Overlay control:
+        
+    }
+
+    private void UpdateOverlayEffect()
+    {
         float distanceToRoom = Vector3.Distance(transform.position, roomTargetPosition.position);
         float t = Mathf.Clamp01(1f - (distanceToRoom / maxOverlayDistance));
 
@@ -129,9 +162,16 @@ public class ProfessorMovement : MonoBehaviour
         overlayMaterial.SetFloat("_PulseAmount", Mathf.Lerp(0.1f, 0.6f, t));
     }
 
+    private void ResetOverlayEffect()
+    {
+        // Set overlay parameters to zero or base neutral values
+        overlayMaterial.SetFloat("_VignetteStrength", 0f);
+        overlayMaterial.SetFloat("_PulseAmount", 0f);
+    }
+
     private void OpenDoorAndEnterRoom()
     {
-        if (doorHandler != null)
+        if (doorHandler != null && !doorHandler.IsDoorOpen())
         {
             doorHandler.React();
         }
@@ -171,8 +211,9 @@ public class ProfessorMovement : MonoBehaviour
 
     private System.Collections.IEnumerator DecideWhatToDo()
     {
-        
-        playerIsHidden = true;
+
+        // Check if player is hidden in any spot
+        playerIsHidden = IsPlayerHidden();
 
         if (playerIsHidden)
         {
@@ -190,8 +231,22 @@ public class ProfessorMovement : MonoBehaviour
             professorAnimator.SetBool("shouldGetAngry", true);
 
             
+            GameOverReached?.Invoke();
+
+
         }
     }
+
+    private bool IsPlayerHidden()
+    {
+        foreach (var handler in hidingHandlers)
+        {
+            if (handler._isHidden)
+                return true;
+        }
+        return false;
+    }
+
     public void SearchForPlayer()
     {
 

@@ -14,6 +14,8 @@ public class HidingHandler : MonoBehaviour, IInteractable
     private AudioListener _atPlayer;
     [SerializeField]
     private AudioListener _atHidingSpot;
+    [SerializeField]
+    public ProfessorMovement professorMovement;
 
     public string GetHint()
     {
@@ -22,6 +24,14 @@ public class HidingHandler : MonoBehaviour, IInteractable
 
     public void React()
     {
+        if (professorMovement != null && !professorMovement.canPlayerStillHide)
+        {
+            Debug.Log("Too late to hide! The professor has already entered.");
+            return; // prevent hiding now
+        }
+
+
+
         _isHidden = !_isHidden;
         _crosshair.SetActive(!_isHidden);
         if (_hiddenCamera != null) _hiddenCamera.enabled = _isHidden;

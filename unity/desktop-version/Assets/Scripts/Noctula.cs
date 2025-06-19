@@ -178,7 +178,11 @@ The output form must be ONLY as follows and json: {reply: ""{reply}"", trustDiff
     {
         if (_trustScore < -30.0)
             GameOverReached?.Invoke();
+
     }
+
+    [SerializeField] 
+    private ProfessorMovement professorMovement;
 
     private void CheckForProfessorCall()
     {
@@ -189,7 +193,15 @@ The output form must be ONLY as follows and json: {reply: ""{reply}"", trustDiff
             Debug.Log("Calling the professor ...");
             _professorCalled = true;
 
-            //trigger the event
+            // Trigger professor movement
+            if (professorMovement != null)
+            {
+                professorMovement.SearchForPlayer();
+            }
+            else
+            {
+                Debug.LogWarning("ProfessorMovement reference is missing!");
+            }
         }
     }
 

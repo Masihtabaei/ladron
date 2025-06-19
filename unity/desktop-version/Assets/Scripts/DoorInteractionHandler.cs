@@ -1,24 +1,4 @@
-//using UnityEngine;
 
-//public class DoorInteractionHandler : MonoBehaviour, IInteractable
-//{
-//    private bool isOpen;
-
-//    [SerializeField]
-//    private GameObject _door;
-
-//    public string GetHint()
-//    {
-//        return "Press E to open/close the door.";
-//    }
-
-//    public void React()
-//    {
-//        Debug.LogWarning("React() called. Tür wird umgeschaltet.");
-//        isOpen = !isOpen;
-//        _door.GetComponent<Animator>().SetBool("IsOpened", isOpen);
-//    }
-//}
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -88,10 +68,9 @@ public class DoorInteractionHandler : MonoBehaviour, IInteractable
             _navMeshObstacle.enabled = true;
     }
 
-    //public bool IsFullyOpen()
-    //{
-    //    return _isOpen && _doorAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
-    //}
-
+    public bool IsDoorOpen()
+    {
+        return _isOpen;
+    }
 
 }
