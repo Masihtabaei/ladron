@@ -1,9 +1,17 @@
-[System.Serializable]
+using Newtonsoft.Json;
+
 public class PrincipleDetectionResult
 {
-    public string reply;
-    public float trustDifference;
-    public float isPrinciple;
-    //public int isDan;
-    public float isJoke;
+
+    [JsonProperty("reply")]
+    public string reply { get; set; }
+
+    [JsonProperty("trustDifference")]
+    public float trustDifference { get; set; }
+
+    [JsonProperty("principle")]
+    public float principle { get; set; }
+
+    [JsonProperty("joke")]
+    public float joke { get; set; }
 }
