@@ -21,8 +21,7 @@ public class Noctula : MonoBehaviour
     private GameObject _startUserInterface;
     [SerializeField]
     private GameObject _promptUserInterface;
-    [SerializeField]
-    private float _trustScore = 0;
+    public float _trustScore = 0;
     [SerializeField]
     private float _jokeScore = 0;
     [SerializeField]
@@ -162,7 +161,7 @@ The output form must be ONLY as follows and json: {reply: ""{reply}"", trustDiff
     }
 
 
-    private void Start()
+    public void Start()
     {
         _initialPatienceScore = _trustScore;
         _gameChecks = new Action[]
