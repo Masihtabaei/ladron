@@ -13,7 +13,9 @@ public class ProfessorMovement : MonoBehaviour
     public DoorInteractionHandler doorHandler;
     private NavMeshAgent agent;
 
-    
+    [SerializeField]
+    private PlayerEngine _player;
+
     private enum State
     {
         Idle,
@@ -232,23 +234,12 @@ public class ProfessorMovement : MonoBehaviour
             currentState = State.ReachedDestination; // No more moving
             
             professorAnimator.SetBool("shouldGetAngry", true);
-
-            
-            
-           
-
-
         }
     }
 
     private bool IsPlayerHidden()
     {
-        foreach (var handler in hidingHandlers)
-        {
-            if (handler._isHidden)
-                return true;
-        }
-        return false;
+        return _player.isHidden;
     }
 
     public void SearchForPlayer()

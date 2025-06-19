@@ -864,6 +864,7 @@ MonoBehaviour:
   professorAnimator: {fileID: 69691077}
   noctula: {fileID: 1478155873}
   doorHandler: {fileID: 2116279019}
+  _player: {fileID: 861925396}
   playerIsHidden: 0
   canPlayerStillHide: 0
   playerTransform: {fileID: 861925393}
@@ -7445,7 +7446,7 @@ PrefabInstance:
       addedObject: {fileID: 789969723}
     - targetCorrespondingSourceObject: {fileID: 8921539520513899747, guid: 04b56971e8bd32b4e9bedd268c4acce4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 789969726}
+      addedObject: {fileID: 789969729}
   m_SourcePrefab: {fileID: 100100000, guid: 04b56971e8bd32b4e9bedd268c4acce4, type: 3}
 --- !u!4 &789969719 stripped
 Transform:
@@ -7474,7 +7475,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3595960966456334598, guid: 5a418d7542169b14ead051121d8f7fee, type: 3}
---- !u!114 &789969726
+--- !u!114 &789969729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7483,18 +7484,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 248957201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a34d241dbd0248018c8f8c31820ec3c, type: 3}
+  m_Script: {fileID: 11500000, guid: f8ab03e387330a746a829940ca2a97cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 13772181}
-  _hiddenCamera: {fileID: 1561481043}
-  _isHidden: 0
-  _crosshair: {fileID: 548009923}
-  _atPlayer: {fileID: 861925397}
-  _atHidingSpot: {fileID: 1561481042}
-  professorMovement: {fileID: 0}
-  _playerTransform: {fileID: 861925393}
-  _hidingSpotTransform: {fileID: 789969719}
+  _hiddenCameraTransform: {fileID: 1561481040}
+  _player: {fileID: 861925396}
+  _ui: {fileID: 895472523}
 --- !u!1001 &803342394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7669,7 +7664,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1019582594542325992, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1051011224}
+      addedObject: {fileID: 1051011228}
     - targetCorrespondingSourceObject: {fileID: 659574304394335785, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1616297261}
@@ -8009,6 +8004,7 @@ MonoBehaviour:
   _timeManager: {fileID: 320691985}
   canMove: 1
   canInteract: 1
+  isHidden: 0
 --- !u!81 &861925397
 AudioListener:
   m_ObjectHideFlags: 0
@@ -10120,7 +10116,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1019582594542325992, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
   m_PrefabInstance: {fileID: 824931759}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1051011224
+--- !u!114 &1051011228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10129,18 +10125,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1051011220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a34d241dbd0248018c8f8c31820ec3c, type: 3}
+  m_Script: {fileID: 11500000, guid: f8ab03e387330a746a829940ca2a97cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 13772181}
-  _hiddenCamera: {fileID: 107925991}
-  _isHidden: 0
-  _crosshair: {fileID: 548009923}
-  _atPlayer: {fileID: 861925397}
-  _atHidingSpot: {fileID: 107925990}
-  professorMovement: {fileID: 0}
-  _playerTransform: {fileID: 861925393}
-  _hidingSpotTransform: {fileID: 650404187}
+  _hiddenCameraTransform: {fileID: 107925988}
+  _player: {fileID: 861925396}
+  _ui: {fileID: 895472523}
 --- !u!1 &1067710970
 GameObject:
   m_ObjectHideFlags: 0

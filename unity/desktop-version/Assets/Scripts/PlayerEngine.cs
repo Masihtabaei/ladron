@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class PlayerEngine : MonoBehaviour
 {
@@ -28,7 +29,10 @@ public class PlayerEngine : MonoBehaviour
     private bool _isGrounded;
 
     public bool canMove = true;
-    public bool canInteract = true;  // add this near 'canMove'
+    public bool canInteract = true;
+    public bool isHidden = false;
+
+    private Transform backupTransform;
 
     private void Awake()
     {
@@ -45,25 +49,8 @@ public class PlayerEngine : MonoBehaviour
     void Update()
     {
         _isGrounded = _controller.isGrounded;
-        _interactionUserInterfaceManager.UpdateHint(string.Empty);
-        Ray ray = new Ray(_eyes.transform.position, _eyes.transform.forward);
-        Debug.DrawRay(ray.origin, ray.direction * _range);
-        RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, _range, _mask))
-        {
-            var interactable = hitInfo.collider.GetComponent<IInteractable>();
-            if (interactable != null)
-            {
-                _interactionUserInterfaceManager.UpdateHint(interactable.GetHint());
-
-                // Only allow interaction if canInteract is true
-                if (canInteract && _inputManager.walking.Interaction.triggered)
-                {
-                    interactable.React();
-                }
-                    
-            }
-        }
+        if(canInteract)
+            _interactionUserInterfaceManager.UpdateHint(string.Empty);
         if (_inputManager.walking.Inbox.triggered)
         {
             _interactionUserInterfaceManager.ToggleInbox();
@@ -73,12 +60,62 @@ public class PlayerEngine : MonoBehaviour
         {
             _interactionUserInterfaceManager.TogglePause();
         }
+        if (!canInteract)
+        {
+            _interactionUserInterfaceManager.UpdateHint("Press E to exit");
+            if (_inputManager.walking.Interaction.triggered)
+            {
+                UnhideCamera(backupTransform);
+            }
+            return;
+        }
+
+        Ray ray = new Ray(_eyes.transform.position, _eyes.transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * _range);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo, _range, _mask))
+        {
+            var interactable = hitInfo.collider.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                _interactionUserInterfaceManager.UpdateHint(interactable.GetHint());
+                if (canInteract && _inputManager.walking.Interaction.triggered)
+                {
+                    interactable.React();
+                }
+            }
+        }
     }
     private void OnDisable()
     {
         _interactionUserInterfaceManager.UpdateHint(string.Empty);
     }
 
+    private Vector3 backupPosition;
+    private Quaternion backupRotation;
+
+    public void HideCamera(Transform targetPosition)
+    {
+        Debug.Log("Hide Camera");
+        canMove = false;
+        canInteract = false;
+        isHidden = true;
+        backupPosition = _eyes.transform.position;
+        backupRotation = _eyes.transform.rotation;
+
+        _eyes.transform.position = targetPosition.position;
+        _eyes.transform.rotation = targetPosition.rotation;
+    }
+
+    public void UnhideCamera(Transform targetPosition = null)
+    {
+        canMove = true;
+        canInteract = true;
+        isHidden = false;
+
+        _eyes.transform.position = backupPosition;
+        _eyes.transform.rotation = backupRotation;
+    }
 
     public void Move(Vector2 input)
     {
@@ -109,10 +146,11 @@ public class PlayerEngine : MonoBehaviour
         _controller.Move(move * Time.deltaTime);
     }
 
-
-
     public void Look(Vector2 input)
     {
+        if (!canMove)
+            return;
+
         float mouseX = input.x;
         float mouseY = input.y;
 
