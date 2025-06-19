@@ -286,7 +286,7 @@ Your output includes:
 The output form must be ONLY as follows and json: {reply: ""{reply}"", trustDifference: {trustdifference}, principle: {principle}, joke:{joke}}
 ";
         }
-        else if(_trustScore<0.0&& _trustScore>-15.0)
+        else if(_trustScore<-5.0&& _trustScore>-15.0)
         {
             clip = clips[1]; if (audioSrc.clip != clip) {
                 audioSrc.Stop();
