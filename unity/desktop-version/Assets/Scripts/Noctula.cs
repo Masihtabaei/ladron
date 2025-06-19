@@ -36,6 +36,11 @@ public class Noctula : MonoBehaviour
     public AudioClip clip;
     public AudioSource audioSrc;
 
+    [SerializeField]
+    private GameObject _inbox;
+
+    [SerializeField]
+    private TextMeshProUGUI _inboxText;
 
     [SerializeField]
     private Button _giveMeExamQuestionsButton;
@@ -217,6 +222,8 @@ The output form must be ONLY as follows and json: {reply: ""{reply}"", trustDiff
             Debug.Log("Calling the professor ...");
             _professorCalled = true;
 
+            _inbox.SetActive(true);
+            _inboxText.text = "Professor Morning is on the way. Hide yourself before it is late";
             // Trigger professor movement
             if (professorMovement != null)
             {

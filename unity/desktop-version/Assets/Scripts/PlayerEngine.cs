@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
@@ -22,6 +23,7 @@ public class PlayerEngine : MonoBehaviour
     private InteractionUserInterfaceManager _interactionUserInterfaceManager;
     [SerializeField]
     private TimeManager _timeManager;
+
 
     private InputManager _inputManager;
     private CharacterController _controller;

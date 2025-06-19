@@ -865,6 +865,8 @@ MonoBehaviour:
   noctula: {fileID: 1478155873}
   doorHandler: {fileID: 2116279019}
   _player: {fileID: 861925396}
+  _inbox: {fileID: 991356002}
+  _inboxText: {fileID: 688653300}
   playerIsHidden: 0
   canPlayerStillHide: 0
   playerTransform: {fileID: 861925393}
@@ -14493,6 +14495,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e379e423404d32240802ac4b5388511e, type: 3}
   clip: {fileID: 0}
   audioSrc: {fileID: 1393495347}
+  _inbox: {fileID: 991356002}
+  _inboxText: {fileID: 688653300}
   _giveMeExamQuestionsButton: {fileID: 144320928}
   _tellMeJokeButton: {fileID: 981704342}
   _sayHelloButton: {fileID: 1538456079}

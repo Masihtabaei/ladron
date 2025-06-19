@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,6 +16,12 @@ public class ProfessorMovement : MonoBehaviour
 
     [SerializeField]
     private PlayerEngine _player;
+
+    [SerializeField]
+    private GameObject _inbox;
+
+    [SerializeField]
+    private TextMeshProUGUI _inboxText;
 
     private enum State
     {
@@ -224,6 +231,7 @@ public class ProfessorMovement : MonoBehaviour
             currentState = State.Returning;
             agent.SetDestination(initialPosition);
             professorAnimator.SetBool("shouldWalk", true);
+            _inboxText.text = "Dear Ladron Nordal,\r\nThis is your official notice that your prompt engineering exam starts at 08:00 AM the next day of when you will be receiving this letter.\r\nProfessor Morning also wanted us to inform you that failing this exam will result in an instant removal from the student registry with no possibility to ever study computer science at any other university in Germany ever again.\r\nAny attempts to cheat, for example through strategic LLM prompting, will be prosecuted by Professor Morning himself. Additionally, the popular LLM Noctula was instruced to report any suspicous user behaviour as well as their respective IP adress to Professor Morning.\r\nWe, the University of Applied Sciences in Coburg, and all its faculty members including Prof. Morning cannot be held accountable or sued for whatever the prosecution by Professor Morning entails.\r\nGood luck on your exam!\r\nKind regards,\r\nThe examination committee.";
         }
         else
         {
