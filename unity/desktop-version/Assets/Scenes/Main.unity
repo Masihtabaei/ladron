@@ -1703,6 +1703,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 335715110992909045, guid: 26b8166c4f06708408d1d04ab4ee35d8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5042380748437594471, guid: 26b8166c4f06708408d1d04ab4ee35d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -7270,6 +7274,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 170235280115720609, guid: c28f78ec568fdde469c5319409c09d3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3788151808490848932, guid: c28f78ec568fdde469c5319409c09d3c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -7606,6 +7614,22 @@ PrefabInstance:
     - target: {fileID: 1887399607078291239, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3435206329318234120, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
+      propertyPath: m_Size.y
+      value: 0.00821437
+      objectReference: {fileID: 0}
+    - target: {fileID: 3435206329318234120, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
+      propertyPath: m_Center.x
+      value: 0.000000031823095
+      objectReference: {fileID: 0}
+    - target: {fileID: 3435206329318234120, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
+      propertyPath: m_Center.y
+      value: 0.002904571
+      objectReference: {fileID: 0}
+    - target: {fileID: 3435206329318234120, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
+      propertyPath: m_Center.z
+      value: 0.00017437323
       objectReference: {fileID: 0}
     - target: {fileID: 4501253287010016636, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
       propertyPath: m_LocalScale.x
@@ -20765,6 +20789,10 @@ PrefabInstance:
     - target: {fileID: 4937738820420830194, guid: 1eb2f085698b0174e968479dc9b1d066, type: 3}
       propertyPath: m_Name
       value: Room Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411271207387979900, guid: 1eb2f085698b0174e968479dc9b1d066, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8382916776376327808, guid: 1eb2f085698b0174e968479dc9b1d066, type: 3}
       propertyPath: m_LocalPosition.x
