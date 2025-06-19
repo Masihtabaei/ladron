@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ChairInteractionManager : MonoBehaviour, IInteractable
 {
@@ -16,6 +17,15 @@ public class ChairInteractionManager : MonoBehaviour, IInteractable
     private AudioListener _atComputer;
 
     [SerializeField]
+    private TextMeshProUGUI _inboxButton;
+
+    [SerializeField]
+    private TextMeshProUGUI _pauseButton;
+
+    [SerializeField]
+    private TextMeshProUGUI _closeButton;
+
+    [SerializeField]
     private Noctula _noctula;
 
 
@@ -29,7 +39,6 @@ public class ChairInteractionManager : MonoBehaviour, IInteractable
     public void React()
     {
         
-
         _isSitting = !_isSitting;
         _crosshair.SetActive(!_isSitting);
         
@@ -43,10 +52,16 @@ public class ChairInteractionManager : MonoBehaviour, IInteractable
 
         if (_isSitting)
         {
+            _inboxButton.text = "Inbox";
+            _pauseButton.text = "Pause";
+            _closeButton.text = "Close";
             _noctula.PlayerSatDown();
         }
         else
         {
+            _inboxButton.text = "Inbox [M]";
+            _pauseButton.text = "Pause [P]";
+            _closeButton.text = "Close [M]";
             _noctula.PlayerLeftChair();
         }
 
