@@ -30,7 +30,7 @@ public class AudioSwitcher : MonoBehaviour
         bg.clip = elevatorBackground;
         bg.Play();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(60f);
         bg.Stop();
         bg.loop = false;
         bg.clip = bing;
