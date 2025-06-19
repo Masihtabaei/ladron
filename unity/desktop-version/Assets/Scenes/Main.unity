@@ -6741,14 +6741,33 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-    eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-    no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
-    amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
-    et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-    sanctus est Lorem ipsum dolor sit amet.
+  m_text: 'Dear Ladron Nordal,
+
+    This is your official notice that your prompt
+    engineering exam starts at 08:00 AM the next day of when you will be receiving
+    this letter.
+
+    Professor Morning also wanted us to inform you that failing
+    this exam will result in an instant removal from the student registry with no
+    possibility to ever study computer science at any other university in Germany
+    ever again.
+
+    Any attempts to cheat, for example through strategic LLM prompting,
+    will be prosecuted by Professor Morning himself. Additionally, the popular LLM
+    Noctula was instruced to report any suspicous user behaviour as well as their
+    respective IP adress to Professor Morning.
+
+    We, the University of Applied
+    Sciences in Coburg, and all its faculty members including Prof. Morning cannot
+    be held accountable or sued for whatever the prosecution by Professor Morning
+    entails.
+
+    Good luck on your exam!
+
+    Kind regards,
+
+    The examination
+    committee.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aed71ee9acc8aa142b692d7f123beaee, type: 2}
   m_sharedMaterial: {fileID: -1481648065003219822, guid: aed71ee9acc8aa142b692d7f123beaee, type: 2}
@@ -6775,8 +6794,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
