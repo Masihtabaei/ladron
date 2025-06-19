@@ -862,6 +862,7 @@ MonoBehaviour:
   doorPosition: {fileID: 561058132}
   roomTargetPosition: {fileID: 202002530}
   professorAnimator: {fileID: 69691077}
+  noctula: {fileID: 1478155873}
   doorHandler: {fileID: 2116279019}
   playerIsHidden: 0
   canPlayerStillHide: 0
