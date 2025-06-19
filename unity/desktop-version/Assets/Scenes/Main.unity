@@ -7993,6 +7993,8 @@ MonoBehaviour:
   _hiddenCamera: {fileID: 1561481043}
   _isHidden: 0
   _crosshair: {fileID: 548009923}
+  _atPlayer: {fileID: 861925397}
+  _atHidingSpot: {fileID: 1561481042}
 --- !u!1001 &803342394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10755,6 +10757,8 @@ MonoBehaviour:
   _hiddenCamera: {fileID: 107925991}
   _isHidden: 0
   _crosshair: {fileID: 548009923}
+  _atPlayer: {fileID: 861925397}
+  _atHidingSpot: {fileID: 107925990}
 --- !u!1 &1067710970
 GameObject:
   m_ObjectHideFlags: 0
@@ -16103,7 +16107,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561481039}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1561481043
 Camera:
   m_ObjectHideFlags: 0
