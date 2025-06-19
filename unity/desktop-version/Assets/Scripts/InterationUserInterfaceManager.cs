@@ -100,15 +100,18 @@ public class InteractionUserInterfaceManager : MonoBehaviour
 
     public void TogglePause()
     {
+        AudioSource[] allSources = UnityEngine.Object.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
         _isPaused = !_isPaused;
         Time.timeScale = (_isPaused ? 0 : 1) & 1;
         if (_isPaused)
         {
-            _audioSource.Pause();
+            foreach (AudioSource source in allSources)
+                source.Pause();
         }
         else
         {
-            _audioSource.UnPause();
+            foreach (AudioSource source in allSources)
+                source.UnPause();
         }
         _pauseMenuOverlay.SetActive(_isPaused);
         _gameOverlay.SetActive(!_isPaused);
