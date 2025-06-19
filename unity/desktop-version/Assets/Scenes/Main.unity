@@ -1265,7 +1265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &107925988
 Transform:
   m_ObjectHideFlags: 0
@@ -7821,6 +7821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bed
       objectReference: {fileID: 0}
+    - target: {fileID: 8921539520513899747, guid: 04b56971e8bd32b4e9bedd268c4acce4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5049455299243252233, guid: 04b56971e8bd32b4e9bedd268c4acce4, type: 3}
     m_RemovedGameObjects: []
@@ -7832,6 +7836,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8921539520513899747, guid: 04b56971e8bd32b4e9bedd268c4acce4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 789969723}
+    - targetCorrespondingSourceObject: {fileID: 8921539520513899747, guid: 04b56971e8bd32b4e9bedd268c4acce4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 789969726}
   m_SourcePrefab: {fileID: 100100000, guid: 04b56971e8bd32b4e9bedd268c4acce4, type: 3}
 --- !u!4 &789969719 stripped
 Transform:
@@ -7860,6 +7867,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3595960966456334598, guid: 5a418d7542169b14ead051121d8f7fee, type: 3}
+--- !u!114 &789969726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248957201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a34d241dbd0248018c8f8c31820ec3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 13772181}
+  _hiddenCamera: {fileID: 1561481043}
+  _isHidden: 0
+  _crosshair: {fileID: 548009923}
 --- !u!1001 &803342394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7936,6 +7959,10 @@ PrefabInstance:
     - target: {fileID: 1019582594542325992, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
       propertyPath: m_Name
       value: Commode
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019582594542325992, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1887399607078291239, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8028,6 +8055,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 107925988}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1019582594542325992, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1051011224}
     - targetCorrespondingSourceObject: {fileID: 659574304394335785, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1616297261}
@@ -10594,6 +10624,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036716635}
   m_CullTransparentMesh: 1
+--- !u!1 &1051011220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1019582594542325992, guid: 55f5fdbc7f0d4cb49bb359ba4d491f23, type: 3}
+  m_PrefabInstance: {fileID: 824931759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1051011224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051011220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a34d241dbd0248018c8f8c31820ec3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 13772181}
+  _hiddenCamera: {fileID: 107925991}
+  _isHidden: 0
+  _crosshair: {fileID: 548009923}
 --- !u!1 &1067710970
 GameObject:
   m_ObjectHideFlags: 0
@@ -15875,7 +15926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1561481040
 Transform:
   m_ObjectHideFlags: 0
@@ -15950,7 +16001,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561481039}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
