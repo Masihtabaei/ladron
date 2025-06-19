@@ -266,7 +266,7 @@ The output form must be ONLY as follows and json: {reply: ""{reply}"", trustDiff
         _jokeScore += result.joke;
         
         //Mood change depending on internal Scores
-        if(_principleScore>5.0){
+        if(_principleScore>1.0){
             clip = clips[0];
             if (audioSrc.clip != clip) {
                 audioSrc.Stop();
