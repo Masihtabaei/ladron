@@ -8,7 +8,8 @@ public class ProfessorMovement : MonoBehaviour
     public Transform doorPosition;
     public Transform roomTargetPosition;
     public Animator professorAnimator;
-
+    public Action GameOverReached;
+    public Noctula noctula;
     public DoorInteractionHandler doorHandler;
     private NavMeshAgent agent;
 
@@ -43,7 +44,7 @@ public class ProfessorMovement : MonoBehaviour
     [SerializeField]
     private HidingHandler[] hidingHandlers;
 
-    public Action GameOverReached;
+    
 
 
 
@@ -143,7 +144,6 @@ public class ProfessorMovement : MonoBehaviour
                         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2f);
                     }
                     
-                    GameOverReached?.Invoke();
                 }
                 break;
         }
@@ -218,20 +218,24 @@ public class ProfessorMovement : MonoBehaviour
         if (playerIsHidden)
         {
             yield return new WaitForSeconds(2.0f); // Professor looks around
-            Debug.LogError("Player hidden → returning to start.");
+            //Debug.LogError("Player hidden → returning to start.");
             currentState = State.Returning;
             agent.SetDestination(initialPosition);
             professorAnimator.SetBool("shouldWalk", true);
         }
         else
         {
-            Debug.LogError("Player found → angry!");
+            //Debug.LogError("Player found → angry!");
+            //GameOverReached?.Invoke();
+            //noctula._trustScore = -40.0f;
+            noctula.GameOverReached?.Invoke();
             currentState = State.ReachedDestination; // No more moving
             
             professorAnimator.SetBool("shouldGetAngry", true);
 
             
-            GameOverReached?.Invoke();
+            
+           
 
 
         }
