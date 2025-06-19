@@ -8016,6 +8016,8 @@ MonoBehaviour:
   _atPlayer: {fileID: 861925397}
   _atHidingSpot: {fileID: 1561481042}
   professorMovement: {fileID: 0}
+  _playerTransform: {fileID: 861925393}
+  _hidingSpotTransform: {fileID: 789969719}
 --- !u!1001 &803342394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10782,6 +10784,8 @@ MonoBehaviour:
   _atPlayer: {fileID: 861925397}
   _atHidingSpot: {fileID: 107925990}
   professorMovement: {fileID: 0}
+  _playerTransform: {fileID: 861925393}
+  _hidingSpotTransform: {fileID: 650404187}
 --- !u!1 &1067710970
 GameObject:
   m_ObjectHideFlags: 0
