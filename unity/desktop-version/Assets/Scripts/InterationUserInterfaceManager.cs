@@ -9,9 +9,6 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     private TextMeshProUGUI _hint;
 
     [SerializeField]
-    private TextMeshProUGUI _dialogue;
-
-    [SerializeField]
     private TextMeshProUGUI _countdownDisplay;
 
     [SerializeField]
@@ -25,6 +22,9 @@ public class InteractionUserInterfaceManager : MonoBehaviour
 
     [SerializeField]
     private GameObject _pauseMenuOverlay;
+
+    [SerializeField]
+    private GameObject _inboxOverlay;
 
     [SerializeField]
     private GameObject _perfectStudentOverlay;
@@ -43,16 +43,13 @@ public class InteractionUserInterfaceManager : MonoBehaviour
     private Noctula _noctula;
 
     private bool _isPaused;
+    private bool _inboxOpened;
 
     public void UpdateHint(string message)
     {
         _hint.text = message;
     }
 
-    public void UpdateDialogue(string message)
-    {
-        _dialogue.text = message;
-    }
     private void OnTimeUpdated(TimeSpan newValue)
     {
         int wrappedHours = (int)newValue.TotalHours % 24;
@@ -136,6 +133,15 @@ public class InteractionUserInterfaceManager : MonoBehaviour
         Time.timeScale = 0;
         _gameOverlay.SetActive(false);
         _jokeOverlay.SetActive(true);
+    }
+
+    public void ToggleInbox()
+    {
+        if (!_isPaused)
+        {
+            _inboxOpened = !_inboxOpened;
+            _inboxOverlay.SetActive(_inboxOpened);
+        }
     }
 
     public void Exit()

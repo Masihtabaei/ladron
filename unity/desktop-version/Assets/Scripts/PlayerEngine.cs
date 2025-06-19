@@ -66,7 +66,7 @@ public class PlayerEngine : MonoBehaviour
         }
         if (_inputManager.walking.Inbox.triggered)
         {
-            Debug.Log("Inbox opened");
+            _interactionUserInterfaceManager.ToggleInbox();
         }
 
         if (_inputManager.walking.Pause.triggered)
