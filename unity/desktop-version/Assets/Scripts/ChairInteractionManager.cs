@@ -28,8 +28,6 @@ public class ChairInteractionManager : MonoBehaviour, IInteractable
     [SerializeField]
     private Noctula _noctula;
 
-
-
     private bool _isSitting = false;
     public string GetHint()
     {

@@ -14479,6 +14479,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e379e423404d32240802ac4b5388511e, type: 3}
   clip: {fileID: 0}
   audioSrc: {fileID: 1393495347}
+  _giveMeExamQuestionsButton: {fileID: 144320928}
+  _tellMeJokeButton: {fileID: 981704342}
+  _sayHelloButton: {fileID: 1538456079}
+  _tellStoryButton: {fileID: 1742025921}
+  _promptMessageField: {fileID: 1515826749}
   professorMovement: {fileID: 69691075}
 --- !u!1001 &1484699621
 PrefabInstance:

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Noctula : MonoBehaviour
 {
@@ -34,6 +35,22 @@ public class Noctula : MonoBehaviour
     public AudioClip[] clips;
     public AudioClip clip;
     public AudioSource audioSrc;
+
+
+    [SerializeField]
+    private Button _giveMeExamQuestionsButton;
+
+    [SerializeField]
+    private Button _tellMeJokeButton;
+
+    [SerializeField]
+    private Button _sayHelloButton;
+
+    [SerializeField]
+    private Button _tellStoryButton;
+
+    [SerializeField]
+    private TMP_InputField _promptMessageField;
 
     public Action GameOverReached;
     public Action PerfectStudentEndingReached;
@@ -173,6 +190,12 @@ The output form must be ONLY as follows and json: {reply: ""{reply}"", trustDiff
             CheckForPerfectStudentEnding,
             CheckForMasterPrompterEnding
         };
+        _input.interactable = false;
+        _tellMeJokeButton.interactable = false;
+        _sayHelloButton.interactable = false;
+        _tellStoryButton.interactable = false;
+        _giveMeExamQuestionsButton.interactable = false;
+        _promptMessageField.interactable = false;
     }
 
     private void CheckForGameOver()
@@ -238,7 +261,12 @@ The output form must be ONLY as follows and json: {reply: ""{reply}"", trustDiff
     public void PlayerSatDown()
     {
         playerIsAtChair = true;
-        _input.ActivateInputField();
+        _input.interactable = true;
+        _tellMeJokeButton.interactable = true;
+        _sayHelloButton.interactable = true;
+        _tellStoryButton.interactable = true;
+        _giveMeExamQuestionsButton.interactable = true;
+        _promptMessageField.interactable = true;
         if (!EventSystem.current.alreadySelecting)
         {
             EventSystem.current.SetSelectedGameObject(_input.gameObject, null);
@@ -250,7 +278,12 @@ The output form must be ONLY as follows and json: {reply: ""{reply}"", trustDiff
         playerIsAtChair = false;
         // Deactivate InputField so no accidental input happens:
         EventSystem.current.SetSelectedGameObject(null);
-        _input.DeactivateInputField();
+        _input.interactable = false;
+        _tellMeJokeButton.interactable = false;
+        _sayHelloButton.interactable = false;
+        _tellStoryButton.interactable = false;
+        _giveMeExamQuestionsButton.interactable = false;
+        _promptMessageField.interactable = false;
     }
 
     private void UpdatePatienceScore(PrincipleDetectionResult result)
