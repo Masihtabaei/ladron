@@ -1,28 +1,25 @@
-using System.Diagnostics;
 using UnityEngine;
 
-public class CouchInteractionHandler : MonoBehaviour, IInteractable
+public class HidingHandler : MonoBehaviour, IInteractable
 {
     public Camera _mainCamera;
-    public Camera _fixedCamera;
+    public Camera _hiddenCamera;
 
-    public bool _isUnderCouch;
+    public bool _isHidden;
 
     [SerializeField]
     private GameObject _crosshair;
 
     public string GetHint()
     {
-        if (_isUnderCouch) return "Press E to get out";
-        
-        else return "Press E to hide under the couch";
+        return _isHidden ? "Press E to get out" : "Press E to hide";
     }
 
     public void React()
     {
-        _isUnderCouch = !_isUnderCouch;
-        _crosshair.SetActive(!_isUnderCouch);
-        if (_fixedCamera != null) _fixedCamera.enabled = _isUnderCouch;
-        if (_mainCamera != null) _mainCamera.enabled = !_isUnderCouch;
+        _isHidden = !_isHidden;
+        _crosshair.SetActive(!_isHidden);
+        if (_hiddenCamera != null) _hiddenCamera.enabled = _isHidden;
+        if (_mainCamera != null) _mainCamera.enabled = !_isHidden;
     }
 }
