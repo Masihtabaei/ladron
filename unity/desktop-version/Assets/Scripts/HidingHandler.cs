@@ -12,7 +12,7 @@ public class HidingHandler : MonoBehaviour, IInteractable
 
     public string GetHint()
     {
-        return _isHidden ? "Press E to get out" : "Press E to hide";
+        return _isHidden ? "Press E to exit!" : "Press E to hide!";
     }
 
     public void React()
