@@ -6,6 +6,8 @@
 > [!IMPORTANT]  
 > This project is licensed under the [MIT License](https://masihtabaei.dev/licenses/mit).
 
+> [!CAUTION]
+> The game design document linked below contains a list of third-party assets and resources we used.
 
 # Trailer
 
