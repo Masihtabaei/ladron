@@ -1,11 +1,15 @@
 # ladron
 
-Narrative survival game focused on riddle-solving, developed within our Fundamentals of Game Design course.
+> [!NOTE]  
+> This project was completed as part of the **Fundamentals of Game Design** course during the **Summer Term 2025** of our undergraduate studies, offered by [Prof. Dr. Stephan Streuber](https://www.hs-coburg.de/en/personen/prof-dr-stephan-streuber/) at [Coburg University](https://www.hs-coburg.de/en/).
+
+> [!IMPORTANT]  
+> This project is licensed under the [MIT License](https://masihtabaei.dev/licenses/mit).
+
 
 # Trailer
 
-https://github.com/user-attachments/assets/f0299bc6-efee-49e1-9ebd-37b98fb9072a
-
+Here you can find a short trailer: [Ladron Trailer on YouTube](https://youtu.be/NyvRtd6qTw0)
 # Pitch
 
 Here you can find slides of our final pitch:
