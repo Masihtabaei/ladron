@@ -1,4 +1,4 @@
-# ladron
+# Ladron
 
 > [!NOTE]  
 > This project was completed as part of the **Fundamentals of Game Design** course during the **Summer Term 2025** of our undergraduate studies, offered by [Prof. Dr. Stephan Streuber](https://www.hs-coburg.de/en/personen/prof-dr-stephan-streuber/) at [Coburg University](https://www.hs-coburg.de/en/).
